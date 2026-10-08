@@ -4,39 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dulla Mabando - Nunua Mabando kwa Urahisi</title>
-    <!-- Tailwind CSS kwa ajili ya Muonekano wa Kisasa -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome kwa ajili ya Icons -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Translate Widget Script -->
+    
+    <!-- Google Translate Script -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'sw',
+                includedLanguages: 'sw,en,fr,es,ar,de,zh-CN,hi,pt,ru,ja,ko,it',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
+
     <style>
-        @keyframes pulse-subtle {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+        /* Background ya kushuka yenye rangi za kuvutia (Sio Nyeupe) */
+        body {
+            background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 35%, #31103f 70%, #090d16 100%);
+            background-attachment: fixed;
+            color: #ffffff;
         }
-        .animate-bounce-custom {
-            animation: pulse-subtle 2s infinite;
+
+        /* Animation za polepole */
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(249, 115, 22, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(249, 115, 22, 0.8); }
         }
+        .animate-glow {
+            animation: glow 3s infinite;
+        }
+
         .network-card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
+            transform: translateY(-6px) scale(1.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        /* Custom Google Translate styling */
+
+        /* Custom Styling ya Google Translate & Search Select */
         .goog-te-gadget-simple {
-            background-color: #1f2937 !important;
-            border: 1px solid #374151 !important;
-            padding: 6px 10px !important;
-            border-radius: 8px !important;
+            background-color: #1e293b !important;
+            border: 1px solid #f97316 !important;
+            padding: 6px 12px !important;
+            border-radius: 10px !important;
             color: #fff !important;
         }
         .goog-te-gadget-simple span {
@@ -44,146 +56,180 @@
         }
     </style>
 </head>
-<body class="bg-slate-900 text-white font-sans min-h-screen flex flex-col">
+<body class="font-sans min-h-screen flex flex-col justify-between">
 
-    <!-- Header / Nav -->
-    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center flex-wrap gap-2">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-wifi text-orange-500 text-2xl animate-pulse"></i>
-                <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
-                    DULLA MABANDO
-                </h1>
+    <!-- Header Section -->
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-700/60 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- Logo & Title -->
+            <div class="flex items-center space-x-3">
+                <div class="p-2 bg-gradient-to-tr from-orange-500 to-yellow-400 rounded-xl animate-glow">
+                    <i class="fa-solid fa-wifi text-slate-900 text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-300 to-amber-200">
+                        DULLA MABANDO
+                    </h1>
+                    <p class="text-xs text-orange-300/80 font-medium">Halotel • Yas • Vodacom • Airtel</p>
+                </div>
             </div>
-            <!-- Google Translate Widget -->
-            <div id="google_translate_element"></div>
+
+            <!-- Language Selector with Search & Presets -->
+            <div class="flex flex-wrap items-center justify-center gap-2 bg-slate-800/80 p-2 rounded-xl border border-slate-700">
+                <!-- Search Box for Languages -->
+                <div class="relative">
+                    <input type="text" id="langSearch" onkeyup="filterLanguages()" placeholder="Search language..." class="bg-slate-900 text-xs text-white px-3 py-1.5 pl-8 rounded-lg border border-slate-600 focus:outline-none focus:border-orange-500 w-36">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs absolute left-2.5 top-2.5"></i>
+                </div>
+
+                <!-- Custom Quick Selector (Kiswahili / English) -->
+                <select id="quickLangSelect" onchange="changeQuickLanguage(this.value)" class="bg-slate-900 text-xs text-orange-400 font-bold px-2 py-1.5 rounded-lg border border-orange-500/50 focus:outline-none">
+                    <option value="sw">🇹🇿 Kiswahili</option>
+                    <option value="en">🇬🇧 English</option>
+                </select>
+
+                <!-- Google Translate Widget Container -->
+                <div id="google_translate_element"></div>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-slate-800 to-slate-900 py-8 px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-orange-400 animate-bounce-custom">
-                Huduma ya Haraka, Uhakika na Bei Nafuu!
+    <section class="py-10 px-4 text-center">
+        <div class="max-w-3xl mx-auto space-y-4">
+            <span class="bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase inline-block">
+                ⚡ Huduma ya Haraka & Masaa 24
+            </span>
+            <h2 class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
+                Pata Bando za Intaneti kwa Bei Nafuu Zaidi!
             </h2>
-            <p class="text-slate-300 text-sm md:text-base">
-                Chagua mtandao wako, chagua vifurushi, kisha fanya malipo na uthibitishe kupokea bando lako papo hapo!
+            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto">
+                Chagua mtandao wako, chagua kifurushi unachokitaka, kisha fanya malipo na uthibitishe kupitia WhatsApp au SMS ili kupata bando lako mara moja!
             </p>
         </div>
     </section>
 
-    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full space-y-10">
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-4 flex-grow w-full space-y-12">
 
-        <!-- Mtandao Selection -->
-        <section>
-            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 border-l-4 border-orange-500 pl-2">
-                <i class="fa-solid fa-mobile-screen text-orange-400"></i> Chagua Mtandao Unaotaka
-            </h3>
+        <!-- Step 1: Select Network -->
+        <section class="space-y-4">
+            <div class="flex items-center space-x-2 border-l-4 border-orange-500 pl-3">
+                <h3 class="text-xl font-bold text-white">1. Chagua Mtandao Unaotaka</h3>
+            </div>
+
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <!-- Halotel -->
-                <button onclick="selectNetwork('halotel')" id="btn-halotel" class="network-card bg-slate-800 p-4 rounded-xl border border-orange-500/50 flex flex-col items-center justify-center space-y-2 hover:bg-orange-500/10 transition">
-                    <span class="text-xl font-bold text-orange-500">HALOTEL</span>
-                    <span class="text-xs text-slate-400">Vifurushi Vipo Wazi</span>
+                <button onclick="selectNetwork('halotel')" class="network-card bg-slate-800/90 border border-orange-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-orange-500 hover:shadow-lg hover:shadow-orange-500/10 transition">
+                    <span class="text-2xl font-black text-orange-500">HALOTEL</span>
+                    <span class="text-xs bg-orange-500/20 text-orange-300 px-2.5 py-1 rounded-full">Vifurushi Vipo Wazi</span>
                 </button>
+
                 <!-- Yas -->
-                <button onclick="selectNetwork('yas')" id="btn-yas" class="network-card bg-slate-800 p-4 rounded-xl border border-purple-500/50 flex flex-col items-center justify-center space-y-2 hover:bg-purple-500/10 transition">
-                    <span class="text-xl font-bold text-purple-400">YAS</span>
-                    <span class="text-xs text-slate-400">Super Bando Unlimited</span>
+                <button onclick="selectNetwork('yas')" class="network-card bg-slate-800/90 border border-purple-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/10 transition">
+                    <span class="text-2xl font-black text-purple-400">YAS</span>
+                    <span class="text-xs bg-purple-500/20 text-purple-300 px-2.5 py-1 rounded-full">Super Bando Unlimited</span>
                 </button>
+
                 <!-- Vodacom -->
-                <button onclick="selectNetwork('vodacom')" id="btn-vodacom" class="network-card bg-slate-800 p-4 rounded-xl border border-red-500/50 flex flex-col items-center justify-center space-y-2 hover:bg-red-500/10 transition">
-                    <span class="text-xl font-bold text-red-500">VODACOM</span>
-                    <span class="text-xs text-slate-400">Omba Direct</span>
+                <button onclick="selectNetwork('vodacom')" class="network-card bg-slate-800/90 border border-red-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/10 transition">
+                    <span class="text-2xl font-black text-red-500">VODACOM</span>
+                    <span class="text-xs bg-red-500/20 text-red-300 px-2.5 py-1 rounded-full">Omba Direct</span>
                 </button>
+
                 <!-- Airtel -->
-                <button onclick="selectNetwork('airtel')" id="btn-airtel" class="network-card bg-slate-800 p-4 rounded-xl border border-rose-600/50 flex flex-col items-center justify-center space-y-2 hover:bg-rose-600/10 transition">
-                    <span class="text-xl font-bold text-rose-500">AIRTEL</span>
-                    <span class="text-xs text-slate-400">Omba Direct</span>
+                <button onclick="selectNetwork('airtel')" class="network-card bg-slate-800/90 border border-rose-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-rose-500 hover:shadow-lg hover:shadow-rose-500/10 transition">
+                    <span class="text-2xl font-black text-rose-500">AIRTEL</span>
+                    <span class="text-xs bg-rose-500/20 text-rose-300 px-2.5 py-1 rounded-full">Omba Direct</span>
                 </button>
             </div>
         </section>
 
-        <!-- Packages Display Area -->
-        <section id="package-section" class="hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
-            <h3 id="package-title" class="text-2xl font-bold mb-4 text-center text-orange-400"></h3>
+        <!-- Step 2: Package List -->
+        <section id="package-section" class="hidden bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl border border-slate-700/80 shadow-2xl space-y-6">
+            <h3 id="package-title" class="text-2xl font-extrabold text-center text-orange-400"></h3>
             
-            <!-- Table for Halotel / Yas -->
+            <!-- Cards Grid for Halotel & Yas -->
             <div id="bundle-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
 
-            <!-- Direct Contact View for Vodacom / Airtel -->
-            <div id="direct-contact" class="hidden text-center py-6 space-y-4">
-                <p class="text-lg text-slate-300">Kwa sasa bando za mtandao huu zinapatikana kwa kuomba au kuwasiliana moja kwa moja na muuzaji:</p>
-                <div class="flex flex-wrap justify-center gap-4 pt-2">
-                    <a href="https://wa.me/255614732395?text=Habari,%20nataka%20bando%20ya%20Mtandao" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition">
-                        <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Direct
+            <!-- Direct View for Vodacom & Airtel -->
+            <div id="direct-contact" class="hidden text-center py-6 space-y-5">
+                <p class="text-slate-200 text-base max-w-xl mx-auto">
+                    Kwa sasa bando za mtandao huu zinapatikana kwa kuomba na kuagiza moja kwa moja kwa muuzaji:
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="https://wa.me/255614732395?text=Habari,%20nataka%20bando%20ya%20Mtandao" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition shadow-lg shadow-green-600/20">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Direct
                     </a>
-                    <a href="tel:0614732395" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition">
-                        <i class="fa-solid fa-phone text-xl"></i> Normal Call
+                    <a href="tel:0614732395" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition shadow-lg shadow-blue-600/20">
+                        <i class="fa-solid fa-phone text-lg"></i> Normal Call
                     </a>
-                    <a href="sms:0614732395?body=Habari,%20nataka%20bando" class="bg-yellow-600 hover:bg-yellow-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition">
-                        <i class="fa-solid fa-comment-sms text-xl"></i> Normal SMS
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section ya Malipo -->
-        <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-yellow-400">
-                <i class="fa-solid fa-wallet"></i> Namba za Kutuma Malipo
-            </h3>
-            <p class="text-slate-300 text-sm mb-4">Tafadhali fanya malipo kwenda namba mojawapo kati ya hizi zifuatazo kabla ya kuthibitisha:</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
-                    <div>
-                        <p class="text-xs text-slate-400">Namba ya Malipo 1</p>
-                        <p class="text-lg font-bold text-orange-400">0614732395</p>
-                        <p class="text-xs text-slate-300">Jina: <span class="font-semibold text-white">YUSUPH ZAKARIA CHENGULA</span></p>
-                    </div>
-                    <a href="tel:0614732395" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-lg text-orange-400">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
-                    <div>
-                        <p class="text-xs text-slate-400">Namba ya Malipo 2</p>
-                        <p class="text-lg font-bold text-orange-400">0651417108</p>
-                        <p class="text-xs text-slate-300">Jina: <span class="font-semibold text-white">ABDULRAHIM ZAKARIA CHENGULA</span></p>
-                    </div>
-                    <a href="tel:0651417108" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-lg text-orange-400">
-                        <i class="fa-solid fa-phone"></i>
+                    <a href="sms:0614732395?body=Habari,%20nataka%20bando" class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition shadow-lg shadow-amber-600/20">
+                        <i class="fa-solid fa-comment-sms text-lg"></i> Normal SMS
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Confirm Payment Section -->
-        <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
-            <h3 class="text-xl font-bold mb-2 flex items-center gap-2 text-green-400">
-                <i class="fa-solid fa-circle-check"></i> Thabitisha Malipo Upate Bando
-            </h3>
-            <p class="text-slate-300 text-sm mb-4">Baada ya kutuma fedha, jaza fomu hii kisha chagua njia ya kutuma uthibitisho kwa muuzaji:</p>
+        <!-- Step 3: Payment Details -->
+        <section class="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl border border-slate-700/80 space-y-4">
+            <div class="flex items-center space-x-2 border-l-4 border-yellow-500 pl-3">
+                <h3 class="text-xl font-bold text-yellow-400">2. Namba za Malipo</h3>
+            </div>
+            <p class="text-slate-300 text-sm">Fanya malipo kwenda namba mojawapo kati ya hizi zifuatazo:</p>
             
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700/80 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-orange-400 font-bold uppercase">Airtel / Tigo / Halotel</span>
+                        <p class="text-xl font-black text-white tracking-wider">0614732395</p>
+                        <p class="text-xs text-slate-300">Jina: <span class="font-bold text-orange-300">YUSUPH ZAKARIA CHENGULA</span></p>
+                    </div>
+                    <a href="tel:0614732395" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-xl text-orange-400 border border-slate-600">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+
+                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700/80 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-orange-400 font-bold uppercase">Vodacom / Halotel / Tigo</span>
+                        <p class="text-xl font-black text-white tracking-wider">0651417108</p>
+                        <p class="text-xs text-slate-300">Jina: <span class="font-bold text-orange-300">ABDULRAHIM ZAKARIA CHENGULA</span></p>
+                    </div>
+                    <a href="tel:0651417108" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-xl text-orange-400 border border-slate-600">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Confirm Payment -->
+        <section class="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl border border-slate-700/80 space-y-4">
+            <div class="flex items-center space-x-2 border-l-4 border-green-500 pl-3">
+                <h3 class="text-xl font-bold text-green-400">3. Thibitisha Malipo Uingiziwe Bando</h3>
+            </div>
+            <p class="text-slate-300 text-sm">Baada ya kutuma fedha, jaza taarifa hizi kutuma uthibitisho kwa muuzaji:</p>
+
             <form id="confirmForm" onsubmit="event.preventDefault();" class="space-y-4 max-w-xl">
                 <div>
-                    <label class="block text-sm font-medium mb-1">Jina Yako / Namba ya Simu Inayopokea Bando:</label>
-                    <input type="text" id="cust-phone" placeholder="Mfano: 0712345678" required class="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-orange-500">
+                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Namba ya Simu Inayotakiwa Kupokea Bando:</label>
+                    <input type="text" id="cust-phone" placeholder="Mfano: 0712345678" required class="w-full p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:outline-none focus:border-orange-500 text-sm">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Kifurushi Ulicholipia:</label>
-                    <input type="text" id="cust-bundle" placeholder="Mfano: Halotel GB 10 au Yas GB 5" required class="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-orange-500">
+                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Kifurushi Ulicholipia:</label>
+                    <input type="text" id="cust-bundle" placeholder="Mfano: Halotel GB 10 au Yas GB 5" required class="w-full p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:outline-none focus:border-orange-500 text-sm">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium mb-1">Jina au Ujumbe wa Muamala (Transaction Message):</label>
-                    <textarea id="cust-msg" rows="2" placeholder="Weka SMS ya Muamala au Jina la Aliyetuma" class="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-orange-500"></textarea>
+                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Jina au Ujumbe wa Muamala (SMS ya Malipo):</label>
+                    <textarea id="cust-msg" rows="2" placeholder="Weka jina au SMS ya muamala hapa..." class="w-full p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:outline-none focus:border-orange-500 text-sm"></textarea>
                 </div>
 
                 <div class="flex flex-wrap gap-3 pt-2">
-                    <button onclick="sendConfirmation('whatsapp')" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition">
-                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    <button onclick="sendConfirmation('whatsapp')" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-3.5 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-green-600/20">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Send via WhatsApp
                     </button>
-                    <button onclick="sendConfirmation('sms')" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition">
-                        <i class="fa-solid fa-comment-sms"></i> Normal SMS
+                    <button onclick="sendConfirmation('sms')" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white py-3.5 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-amber-600/20">
+                        <i class="fa-solid fa-comment-sms text-lg"></i> Send via SMS
                     </button>
                 </div>
             </form>
@@ -192,11 +238,11 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-slate-400 text-sm">
-        <p>&copy; 2026 Dulla Mabando. Tunakuhudumia kwa Uaminifu, Haraka na Bei Nafuu!</p>
+    <footer class="bg-slate-950/90 border-t border-slate-800 py-6 text-center text-slate-400 text-xs mt-10">
+        <p>&copy; 2026 Dulla Mabando. All Rights Reserved. Tunakuhudumia kwa Uaminifu!</p>
     </footer>
 
-    <!-- JavaScript Logical Functions -->
+    <!-- JavaScript Logic -->
     <script>
         const halotelData = [
             { gb: "GB 3", price: "4,000" },
@@ -244,7 +290,6 @@
                 title.innerText = 'Vifurushi vya HALOTEL';
                 directContact.classList.add('hidden');
                 bundleList.classList.remove('hidden');
-                
                 halotelData.forEach(item => {
                     bundleList.innerHTML += createBundleCard('Halotel', item.gb, item.price);
                 });
@@ -252,7 +297,6 @@
                 title.innerText = 'Vifurushi vya YAS (Super Bando Unlimited)';
                 directContact.classList.add('hidden');
                 bundleList.classList.remove('hidden');
-                
                 yasData.forEach(item => {
                     bundleList.innerHTML += createBundleCard('Yas', item.gb, item.price);
                 });
@@ -272,16 +316,16 @@
         function createBundleCard(netName, gb, price) {
             const textMsg = encodeURIComponent(`Habari, nataka kununua Bando la ${netName} ${gb} kwa Tsh ${price}`);
             return `
-                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex flex-col justify-between space-y-3">
+                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between space-y-3 hover:border-orange-500/50 transition">
                     <div>
                         <div class="text-2xl font-black text-orange-400">${gb}</div>
                         <div class="text-lg font-bold text-white">Tsh ${price}</div>
                     </div>
                     <div class="flex gap-2 text-xs">
-                        <a href="https://wa.me/255614732395?text=${textMsg}" target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-2 rounded-lg text-center font-bold">
+                        <a href="https://wa.me/255614732395?text=${textMsg}" target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-2.5 rounded-xl text-center font-bold transition flex items-center justify-center gap-1">
                             <i class="fa-brands fa-whatsapp"></i> WhatsApp
                         </a>
-                        <a href="sms:0614732395?body=${textMsg}" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-2 rounded-lg text-center font-bold">
+                        <a href="sms:0614732395?body=${textMsg}" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-center font-bold transition flex items-center justify-center gap-1">
                             <i class="fa-solid fa-comment"></i> SMS
                         </a>
                     </div>
@@ -306,6 +350,30 @@
                 window.open(`https://wa.me/255614732395?text=${encodedText}`, '_blank');
             } else if(type === 'sms') {
                 window.open(`sms:0614732395?body=${encodedText}`, '_self');
+            }
+        }
+
+        // Language search and change function
+        function filterLanguages() {
+            const query = document.getElementById('langSearch').value.toLowerCase();
+            const select = document.querySelector('.goog-te-combo');
+            if (!select) return;
+
+            for (let i = 0; i < select.options.length; i++) {
+                const txt = select.options[i].text.toLowerCase();
+                if (txt.includes(query) && query !== '') {
+                    select.selectedIndex = i;
+                    select.dispatchEvent(new Event('change'));
+                    break;
+                }
+            }
+        }
+
+        function changeQuickLanguage(langCode) {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
             }
         }
     </script>
