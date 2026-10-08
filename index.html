@@ -160,4 +160,972 @@ h2{
 .net.sel{
   border-color:var(--or);
   background:var(--yl);
-  color:#1a120
+  color:#1a1209;
+  animation:pop .35s
+}
+
+@keyframes pop{
+  50%{transform:scale(1.08)}
+}
+
+/* =========================
+   NETWORK BUNDLE THEMES
+========================= */
+
+#c2.halotel-theme{
+  background:#ff6a00;
+  border-color:#ff6a00;
+  color:#fff;
+}
+
+#c2.halotel-theme .hint,
+#c2.halotel-theme h2{
+  color:#fff;
+}
+
+#c2.halotel-theme .pk{
+  background:#ff8a33;
+  border-color:#ffd1b0;
+  color:#fff;
+}
+
+#c2.halotel-theme .pk.sel{
+  background:#12a150;
+  border-color:#12a150;
+  color:#fff;
+}
+
+#c2.yas-theme{
+  background:#087cff;
+  border-color:#087cff;
+  color:#fff;
+}
+
+#c2.yas-theme .hint,
+#c2.yas-theme h2{
+  color:#fff;
+}
+
+#c2.yas-theme .pk{
+  background:#2990ff;
+  border-color:#b9dcff;
+  color:#fff;
+}
+
+#c2.yas-theme .pk.sel{
+  background:#fff;
+  border-color:#fff;
+  color:#087cff;
+}
+
+#c2.direct-theme{
+  background:#e32626;
+  border-color:#e32626;
+  color:#fff;
+}
+
+#c2.direct-theme .hint,
+#c2.direct-theme h2{
+  color:#fff;
+}
+
+/* ========================= */
+
+.list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px
+}
+
+.pk{
+  padding:10px;
+  border-radius:12px;
+  border:2px solid var(--ln);
+  background:var(--card);
+  color:var(--ink);
+  cursor:pointer;
+  font:inherit;
+  text-align:center;
+  transition:.2s
+}
+
+.pk b{
+  display:block;
+  font-size:20px
+}
+
+.sum{
+  padding:12px;
+  border-radius:12px;
+  background:var(--bg);
+  margin:10px 0;
+  font-weight:700
+}
+
+.pay{
+  border-left:6px solid var(--yl);
+  padding:8px 12px;
+  margin:8px 0;
+  background:var(--bg);
+  border-radius:8px
+}
+
+.pay big{
+  display:block;
+  font:900 24px "Arial Black",sans-serif;
+  letter-spacing:1px
+}
+
+.pay small{
+  color:var(--mut)
+}
+
+input[type=tel],
+input[type=text]{
+  width:100%;
+  font:inherit;
+  padding:12px;
+  border:2px solid var(--ln);
+  border-radius:12px;
+  background:var(--card);
+  color:var(--ink);
+  margin:4px 0 8px
+}
+
+label.ck{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:12px;
+  border:2px dashed var(--or);
+  border-radius:12px;
+  font-weight:700
+}
+
+label.ck input{
+  width:24px;
+  height:24px;
+  flex:none
+}
+
+.acts{
+  display:grid;
+  gap:10px;
+  margin-top:12px
+}
+
+.btn{
+  display:block;
+  text-align:center;
+  padding:14px;
+  border-radius:14px;
+  font-weight:800;
+  text-decoration:none;
+  color:#fff;
+  font-size:17px
+}
+
+.wa{
+  background:#25d366;
+  color:#06361a
+}
+
+.cl{
+  background:#1a1209
+}
+
+.sm{
+  background:#2563eb
+}
+
+.btn.off{
+  opacity:.35;
+  pointer-events:none
+}
+
+.btn.go{
+  animation:pl 1.6s infinite
+}
+
+@keyframes pl{
+  0%{
+    box-shadow:0 0 0 0 rgba(255,106,0,.6)
+  }
+  100%{
+    box-shadow:0 0 0 14px rgba(255,106,0,0)
+  }
+}
+
+.msg{
+  color:var(--or);
+  font-weight:700;
+  min-height:22px
+}
+
+.direct-box{
+  padding:14px;
+  margin-top:12px;
+  border-radius:14px;
+  background:rgba(0,0,0,.18);
+  border:2px solid rgba(255,255,255,.55);
+  color:#fff;
+  font-weight:800;
+}
+
+.direct-title{
+  margin-bottom:8px;
+}
+
+.sw{
+  display:flex;
+  gap:8px;
+  margin:6px 0
+}
+
+.sw button{
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:2px solid var(--ln);
+  background:var(--card);
+  color:var(--ink);
+  font:inherit;
+  cursor:pointer
+}
+
+footer{
+  text-align:center;
+  color:var(--mut);
+  font-size:13px;
+  padding:12px
+}
+
+[hidden]{
+  display:none!important
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{
+    animation:none!important
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="w">
+
+<header>
+  <h1>Dulla <span>Mabando</span></h1>
+
+  <!-- Lugha mbili tu -->
+  <select id="lang" aria-label="Language">
+    <option value="sw">Kiswahili</option>
+    <option value="en">English</option>
+  </select>
+</header>
+
+<div class="hero">
+  <b data-t="tag"></b>
+  <span data-t="sub"></span>
+</div>
+
+<div class="steps">
+  <div class="st" id="s1"></div>
+  <div class="st" id="s2"></div>
+  <div class="st" id="s3"></div>
+</div>
+
+<!-- ================= STEP 1 ================= -->
+
+<section class="card" id="c1">
+
+<h2 data-t="h1"></h2>
+
+<p class="hint">
+  <span class="pt">👇</span>
+  <span data-t="p1"></span>
+</p>
+
+<div class="nets" id="nets"></div>
+
+</section>
+
+<!-- ================= STEP 2 ================= -->
+
+<section class="card" id="c2" hidden>
+
+<h2 data-t="h2"></h2>
+
+<p class="hint">
+  <span class="pt">👇</span>
+  <span data-t="p2"></span>
+</p>
+
+<div class="list" id="list"></div>
+
+<div id="direct" hidden></div>
+
+</section>
+
+<!-- ================= STEP 3 ================= -->
+
+<section class="card" id="c3" hidden>
+
+<h2 data-t="h3"></h2>
+
+<div class="sum" id="sum"></div>
+
+<!-- MALIPO -->
+
+<p class="hint">
+  1️⃣ <span data-t="pay1"></span>
+</p>
+
+<div class="pay">
+  <big>0614732395</big>
+  <small>YUSUPH ZAKARIA CHENGULA</small>
+</div>
+
+<div class="pay">
+  <big>0651417108</big>
+  <small>ABDULRAHIM ZAKARIA CHENGULA</small>
+</div>
+
+<!-- TAARIFA ZA MTEJA -->
+
+<p class="hint">
+  2️⃣ <span data-t="pay2"></span>
+</p>
+
+<input
+  type="tel"
+  id="ph"
+  inputmode="tel"
+  placeholder="07XXXXXXXX"
+>
+
+<!-- JINA LA ALIYELIPA -->
+
+<input
+  type="text"
+  id="payer"
+  data-p="payer"
+>
+
+<!-- ID YA MUAMALA SI LAZIMA -->
+
+<input
+  type="text"
+  id="tx"
+  data-p="txp"
+>
+
+<p class="hint">
+  3️⃣ <span data-t="pay3"></span>
+</p>
+
+<label class="ck pulse">
+  <input type="checkbox" id="ok">
+  <span data-t="conf"></span>
+</label>
+
+<p class="msg" id="msg"></p>
+
+<!-- MAWASILIANO -->
+
+<p class="hint">
+  4️⃣ <span data-t="to"></span>
+</p>
+
+<div class="acts">
+
+<a
+  class="btn wa off"
+  id="bwa"
+  target="_blank"
+  rel="noopener"
+>
+  WhatsApp
+</a>
+
+<a
+  class="btn sm off"
+  id="bsm"
+>
+  SMS
+</a>
+
+</div>
+
+</section>
+
+<footer>
+Dulla Mabando · Halotel · Yas · Vodacom · Airtel
+</footer>
+
+</div>
+
+<script>
+
+/* =========================
+   LANGUAGES
+========================= */
+
+var T={
+
+sw:{
+tag:"Bando za mitandao yote, haraka na bei nafuu",
+sub:"Halotel, Yas, Vodacom na Airtel — 24/7",
+
+s1:"1 Mtandao",
+s2:"2 Kifurushi",
+s3:"3 Lipa",
+
+h1:"Chagua mtandao wako",
+p1:"Bofya mtandao unaotumia",
+
+h2:"Chagua kifurushi",
+p2:"Bofya kifurushi unachotaka",
+
+h3:"Lipa na uthibitishe",
+
+pay1:"Tuma pesa kwa namba hii:",
+
+pay2:"Weka namba itakayopokea bando, jina la aliyelipa na ID ya muamala:",
+
+payer:"Jina la aliyelipa",
+
+txp:"ID ya muamala (si lazima)",
+
+pay3:"Ukishalipa, thibitisha hapa:",
+
+conf:"Nimelipa. Thibitisha malipo ili uendelee.",
+
+to:"Tuma oda yako kwa mtoa huduma:",
+
+ready:"Sawa! Sasa tuma oda yako 👇",
+
+need:"Weka namba ya simu, jina la aliyelipa na uweke tiki ya malipo kwanza.",
+
+pk:"Kifurushi",
+net:"Mtandao",
+tsh:"TSh",
+
+vodacom:"Tunatoa pia na bando za Vodacom kwa maombi maalumu. Wasiliana nasi kwa WhatsApp moja kwa moja au tuma SMS moja kwa moja kwa mtoa huduma.",
+
+airtel:"Tunatoa pia na bando za Airtel kwa maombi maalumu. Wasiliana nasi kwa WhatsApp moja kwa moja au tuma SMS moja kwa moja kwa mtoa huduma.",
+
+directVodacom:"HABARI DULLA MABANDO NAOMBA KUJUA BEI ZA BANDO ZA VODACOM",
+
+directAirtel:"HABARI DULLA MABANDO NAOMBA KUJUA BEI ZA BANDO ZA AIRTEL"
+},
+
+en:{
+tag:"Data bundles for all networks, fast and cheap",
+sub:"Halotel, Yas, Vodacom and Airtel — 24/7",
+
+s1:"1 Network",
+s2:"2 Bundle",
+s3:"3 Pay",
+
+h1:"Choose your network",
+p1:"Tap the network you use",
+
+h2:"Choose a bundle",
+p2:"Tap the bundle you want",
+
+h3:"Pay and confirm",
+
+pay1:"Send money to this number:",
+
+pay2:"Enter the receiving number, payer name and transaction ID:",
+
+payer:"Name of payer",
+
+txp:"Transaction ID (optional)",
+
+pay3:"After paying, confirm here:",
+
+conf:"I have paid. Confirm payment to continue.",
+
+to:"Send your order to the service provider:",
+
+ready:"Done! Now send your order 👇",
+
+need:"Enter the phone number, payer name and tick the payment box first.",
+
+pk:"Bundle",
+net:"Network",
+tsh:"TSh",
+
+vodacom:"We also provide Vodacom bundles on special request. Contact us directly via WhatsApp or send an SMS directly to the service provider.",
+
+airtel:"We also provide Airtel bundles on special request. Contact us directly via WhatsApp or send an SMS directly to the service provider.",
+
+directVodacom:"HELLO DULLA MABANDO I WOULD LIKE TO KNOW THE PRICES OF VODACOM BUNDLES",
+
+directAirtel:"HELLO DULLA MABANDO I WOULD LIKE TO KNOW THE PRICES OF AIRTEL BUNDLES"
+}
+
+};
+
+var NAMES={
+  halotel:"Halotel",
+  yas:"Yas",
+  vodacom:"Vodacom",
+  airtel:"Airtel"
+};
+
+/* =========================
+   BEI ZA MABANDO
+========================= */
+
+var N={
+
+halotel:{
+p:{
+3:4000,
+4:5000,
+5:6000,
+6:7000,
+7:8000,
+8:9000,
+9:9500,
+10:10000,
+15:15000,
+20:20000,
+30:30000,
+50:48000,
+100:90000
+}
+},
+
+yas:{
+p:{
+1:1800,
+2:3600,
+3:5400,
+4:7200,
+5:9000,
+6:10800,
+7:12600,
+8:14400,
+9:16200,
+10:18000,
+20:35000,
+30:52000,
+40:70000,
+50:85000
+}
+},
+
+vodacom:{},
+airtel:{}
+
+};
+
+/* =========================
+   MUUZAJI
+========================= */
+
+var SELLER="0651417108";
+
+/* ========================= */
+
+var st={
+  lang:"sw",
+  net:null,
+  gb:null
+};
+
+var $=function(i){
+  return document.getElementById(i);
+};
+
+function t(k){
+  return (T[st.lang]||T.en)[k] || T.en[k];
+}
+
+function fmt(n){
+  return Number(n).toLocaleString("en-US");
+}
+
+function intl(n){
+  return "255"+n.slice(1);
+}
+
+/* =========================
+   BUNDLE LABEL
+========================= */
+
+function pkLabel(){
+
+  if(!st.net)return "";
+
+  var p=N[st.net].p;
+
+  if(p){
+    return st.gb+"GB — "+fmt(p[st.gb])+" "+t("tsh");
+  }
+
+  return st.gb || "";
+}
+
+/* =========================
+   DIRECT MESSAGE
+========================= */
+
+function getDirectMessage(){
+
+  if(st.net==="vodacom"){
+    return t("directVodacom");
+  }
+
+  if(st.net==="airtel"){
+    return t("directAirtel");
+  }
+
+  return "";
+}
+
+/* =========================
+   ORDER MESSAGE
+========================= */
+
+function orderMessage(){
+
+  var customerNumber=$("ph").value.trim();
+  var payerName=$("payer").value.trim();
+
+  var price="";
+
+  if(st.net && N[st.net].p && st.gb){
+    price=fmt(N[st.net].p[st.gb])+" "+t("tsh");
+  }
+
+  var msg=
+
+`HABARI! DULLA MABANDO ❤❤❤
+
+NIMEKAMILISHA MALIPO NA KUWEKA ODA ✅️✅️
+
+TAARIFA ZA ODA
+■mtandao: ${NAMES[st.net]}
+■Kifurushi: ${pkLabel()}
+■Bei: ${price}
+■Namba inayowekewa bando: ${customerNumber}
+
+UTHIBITISHO WA MALIPO
+■jina la aliyelipa: ${payerName}
+■Namba iliyolipa: ${customerNumber}`;
+
+  return msg;
+}
+
+/* =========================
+   RENDER
+========================= */
+
+function render(){
+
+  document.documentElement.lang=st.lang;
+
+  document.querySelectorAll("[data-t]").forEach(function(e){
+    e.textContent=t(e.dataset.t);
+  });
+
+  document.querySelectorAll("[data-p]").forEach(function(e){
+    e.placeholder=t(e.dataset.p);
+  });
+
+  /* STEP INDICATORS */
+
+  var step=0;
+
+  if(st.net){
+    step=1;
+  }
+
+  if(st.net && st.gb){
+    step=2;
+  }
+
+  ["s1","s2","s3"].forEach(function(k,i){
+
+    var e=$(k);
+
+    e.textContent=t(k);
+
+    e.className="st"+
+      (i<step?" done":"")+
+      (i==step?" on":"");
+
+  });
+
+  /* NETWORK BUTTONS */
+
+  $("nets").innerHTML="";
+
+  Object.keys(NAMES).forEach(function(k){
+
+    var b=document.createElement("button");
+
+    b.className="net"+(st.net===k?" sel":"");
+
+    b.textContent=NAMES[k];
+
+    b.onclick=function(){
+
+      st.net=k;
+      st.gb=null;
+
+      render();
+
+      $("c2").scrollIntoView({
+        behavior:"smooth"
+      });
+
+    };
+
+    $("nets").appendChild(b);
+
+  });
+
+  $("c2").hidden=!st.net;
+
+  /* REMOVE OLD THEMES */
+
+  $("c2").classList.remove(
+    "halotel-theme",
+    "yas-theme",
+    "direct-theme"
+  );
+
+  /* APPLY NETWORK THEME */
+
+  if(st.net==="halotel"){
+    $("c2").classList.add("halotel-theme");
+  }
+
+  if(st.net==="yas"){
+    $("c2").classList.add("yas-theme");
+  }
+
+  if(st.net==="vodacom" || st.net==="airtel"){
+    $("c2").classList.add("direct-theme");
+  }
+
+  /* BUNDLES */
+
+  var p=st.net && N[st.net].p;
+
+  $("list").innerHTML="";
+
+  $("list").hidden=!p;
+
+  $("direct").hidden=true;
+
+  /* HALOTEL / YAS */
+
+  if(p){
+
+    Object.keys(p).forEach(function(g){
+
+      var b=document.createElement("button");
+
+      b.className="pk"+(String(st.gb)===String(g)?" sel":"");
+
+      b.innerHTML=
+        "<b>"+g+" GB</b>"+
+        fmt(p[g])+" "+t("tsh");
+
+      b.onclick=function(){
+
+        st.gb=g;
+
+        render();
+
+        $("c3").scrollIntoView({
+          behavior:"smooth"
+        });
+
+      };
+
+      $("list").appendChild(b);
+
+    });
+
+  }
+
+  /* VODACOM / AIRTEL */
+
+  if(st.net==="vodacom" || st.net==="airtel"){
+
+    $("direct").hidden=false;
+
+    $("direct").innerHTML=
+
+      '<div class="direct-box">'+
+
+      '<div class="direct-title">'+
+      getDirectMessage()+
+      '</div>'+
+
+      '<div style="margin-top:12px">'+
+      '📩 '+
+
+      (
+        st.net==="vodacom"
+        ? t("directVodacom")
+        : t("directAirtel")
+      )+
+
+      '</div>'+
+
+      '</div>';
+
+    /*
+      Tunafanya gb kuwa na thamani ya moja kwa moja
+      ili mfumo uruhusu buttons za WhatsApp/SMS
+    */
+
+    st.gb=st.net.toUpperCase()+" REQUEST";
+
+  }
+
+  /* STEP 3 */
+
+  $("c3").hidden=!(st.net && st.gb);
+
+  $("sum").textContent=
+    st.net
+    ? NAMES[st.net]+" • "+pkLabel()
+    : "";
+
+  upd();
+}
+
+/* =========================
+   UPDATE BUTTONS
+========================= */
+
+function upd(){
+
+  var customer=$("ph").value.trim();
+
+  var payer=$("payer").value.trim();
+
+  var checkbox=$("ok").checked;
+
+  /*
+    Kwa Vodacom/Airtel jina na namba bado
+    vinaweza kutumika kutuma ombi.
+  */
+
+  var ok=
+    customer.length>=9 &&
+    payer.length>=2 &&
+    checkbox &&
+    st.net &&
+    st.gb;
+
+  $("msg").textContent=
+    ok
+    ? t("ready")
+    : t("need");
+
+  /* ORDER MESSAGE */
+
+  var m=encodeURIComponent(
+    st.net && st.gb
+    ? orderMessage()
+    : ""
+  );
+
+  /* DIRECT MESSAGE FOR VODACOM/AIRTEL */
+
+  var direct="";
+
+  if(st.net==="vodacom"){
+    direct=encodeURIComponent(t("directVodacom"));
+  }
+
+  if(st.net==="airtel"){
+    direct=encodeURIComponent(t("directAirtel"));
+  }
+
+  /*
+    Kwa Vodacom/Airtel:
+    kabla ya malipo tunatumia ujumbe wa moja kwa moja.
+  */
+
+  var finalMessage=
+    (st.net==="vodacom" || st.net==="airtel")
+    ? direct
+    : m;
+
+  $("bwa").href=
+    "https://wa.me/"+intl(SELLER)+
+    "?text="+finalMessage;
+
+  $("bsm").href=
+    "sms:+255"+SELLER.slice(1)+
+    "?body="+finalMessage;
+
+  $("bwa").classList.toggle("off",!ok);
+
+  $("bsm").classList.toggle("off",!ok);
+
+  $("bwa").classList.toggle("go",!!ok);
+
+  $("bsm").classList.toggle("go",!!ok);
+}
+
+/* =========================
+   EVENTS
+========================= */
+
+$("lang").onchange=function(){
+
+  st.lang=this.value;
+
+  try{
+    localStorage.setItem("dm_lang",st.lang);
+  }catch(e){}
+
+  render();
+};
+
+$("ok").onchange=upd;
+
+$("ph").oninput=upd;
+
+$("payer").oninput=upd;
+
+$("tx").oninput=upd;
+
+/* =========================
+   LOAD LANGUAGE
+========================= */
+
+try{
+
+  var saved=
+    localStorage.getItem("dm_lang");
+
+  if(saved && T[saved]){
+    st.lang=saved;
+  }
+
+}catch(e){}
+
+$("lang").value=st.lang;
+
+render();
+
+</script>
+
+</body>
+    </html>
