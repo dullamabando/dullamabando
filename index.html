@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulla Mabando - Nunua Mabando kwa Urahisi</title>
+    <!-- Tailwind CSS kwa ajili ya Muonekano wa Kisasa -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome kwa ajili ya Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Translate Widget Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'sw',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <style>
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        .animate-bounce-custom {
+            animation: pulse-subtle 2s infinite;
+        }
+        .network-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        /* Custom Google Translate styling */
+        .goog-te-gadget-simple {
+            background-color: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            padding: 6px 10px !important;
+            border-radius: 8px !important;
+            color: #fff !important;
+        }
+        .goog-te-gadget-simple span {
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white font-sans min-h-screen flex flex-col">
+
+    <!-- Header / Nav -->
+    <header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center flex-wrap gap-2">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-wifi text-orange-500 text-2xl animate-pulse"></i>
+                <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-300">
+                    DULLA MABANDO
+                </h1>
+            </div>
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-slate-800 to-slate-900 py-8 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-orange-400 animate-bounce-custom">
+                Huduma ya Haraka, Uhakika na Bei Nafuu!
+            </h2>
+            <p class="text-slate-300 text-sm md:text-base">
+                Chagua mtandao wako, chagua vifurushi, kisha fanya malipo na uthibitishe kupokea bando lako papo hapo!
+            </p>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full space-y-10">
+
+        <!-- Mtandao Selection -->
+        <section>
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 border-l-4 border-orange-500 pl-2">
+                <i class="fa-solid fa-mobile-screen text-orange-400"></i> Chagua Mtandao Unaotaka
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Halotel -->
+                <button onclick="selectNetwork('halotel')" id="btn-halotel" class="network-card bg-slate-800 p-4 rounded-xl border border-orange-500/50 flex flex-col items-center justify-center space-y-2 hover:bg-orange-500/10 transition">
+                    <span class="text-xl font-bold text-orange-500">HALOTEL</span>
+                    <span class="text-xs text-slate-400">Vifurushi Vipo Wazi</span>
+                </button>
+                <!-- Yas -->
+                <button onclick="selectNetwork('yas')" id="btn-yas" class="network-card bg-slate-800 p-4 rounded-xl border border-purple-500/50 flex flex-col items-center justify-center space-y-2 hover:bg-purple-500/10 transition">
+                    <span class="text-xl font-bold text-purple-400">YAS</span>
+                    <span class="text-xs text-slate-400">Super Bando Unlimited</span>
+                </button>
+                <!-- Vodacom -->
+                <button onclick="selectNetwork('vodacom')" id="btn-vodacom" class="network-card bg-slate-800 p-4 rounded-xl border border-red-500/50 flex flex-col items-center justify-center space-y-2 hover:bg-red-500/10 transition">
+                    <span class="text-xl font-bold text-red-500">VODACOM</span>
+                    <span class="text-xs text-slate-400">Omba Direct</span>
+                </button>
+                <!-- Airtel -->
+                <button onclick="selectNetwork('airtel')" id="btn-airtel" class="network-card bg-slate-800 p-4 rounded-xl border border-rose-600/50 flex flex-col items-center justify-center space-y-2 hover:bg-rose-600/10 transition">
+                    <span class="text-xl font-bold text-rose-500">AIRTEL</span>
+                    <span class="text-xs text-slate-400">Omba Direct</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Packages Display Area -->
+        <section id="package-section" class="hidden bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
+            <h3 id="package-title" class="text-2xl font-bold mb-4 text-center text-orange-400"></h3>
+            
+            <!-- Table for Halotel / Yas -->
+            <div id="bundle-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+
+            <!-- Direct Contact View for Vodacom / Airtel -->
+            <div id="direct-contact" class="hidden text-center py-6 space-y-4">
+                <p class="text-lg text-slate-300">Kwa sasa bando za mtandao huu zinapatikana kwa kuomba au kuwasiliana moja kwa moja na muuzaji:</p>
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <a href="https://wa.me/255614732395?text=Habari,%20nataka%20bando%20ya%20Mtandao" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Direct
+                    </a>
+                    <a href="tel:0614732395" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition">
+                        <i class="fa-solid fa-phone text-xl"></i> Normal Call
+                    </a>
+                    <a href="sms:0614732395?body=Habari,%20nataka%20bando" class="bg-yellow-600 hover:bg-yellow-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition">
+                        <i class="fa-solid fa-comment-sms text-xl"></i> Normal SMS
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section ya Malipo -->
+        <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+            <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-yellow-400">
+                <i class="fa-solid fa-wallet"></i> Namba za Kutuma Malipo
+            </h3>
+            <p class="text-slate-300 text-sm mb-4">Tafadhali fanya malipo kwenda namba mojawapo kati ya hizi zifuatazo kabla ya kuthibitisha:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400">Namba ya Malipo 1</p>
+                        <p class="text-lg font-bold text-orange-400">0614732395</p>
+                        <p class="text-xs text-slate-300">Jina: <span class="font-semibold text-white">YUSUPH ZAKARIA CHENGULA</span></p>
+                    </div>
+                    <a href="tel:0614732395" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-lg text-orange-400">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-slate-400">Namba ya Malipo 2</p>
+                        <p class="text-lg font-bold text-orange-400">0651417108</p>
+                        <p class="text-xs text-slate-300">Jina: <span class="font-semibold text-white">ABDULRAHIM ZAKARIA CHENGULA</span></p>
+                    </div>
+                    <a href="tel:0651417108" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-lg text-orange-400">
+                        <i class="fa-solid fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Confirm Payment Section -->
+        <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+            <h3 class="text-xl font-bold mb-2 flex items-center gap-2 text-green-400">
+                <i class="fa-solid fa-circle-check"></i> Thabitisha Malipo Upate Bando
+            </h3>
+            <p class="text-slate-300 text-sm mb-4">Baada ya kutuma fedha, jaza fomu hii kisha chagua njia ya kutuma uthibitisho kwa muuzaji:</p>
+            
+            <form id="confirmForm" onsubmit="event.preventDefault();" class="space-y-4 max-w-xl">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Jina Yako / Namba ya Simu Inayopokea Bando:</label>
+                    <input type="text" id="cust-phone" placeholder="Mfano: 0712345678" required class="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Kifurushi Ulicholipia:</label>
+                    <input type="text" id="cust-bundle" placeholder="Mfano: Halotel GB 10 au Yas GB 5" required class="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-orange-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Jina au Ujumbe wa Muamala (Transaction Message):</label>
+                    <textarea id="cust-msg" rows="2" placeholder="Weka SMS ya Muamala au Jina la Aliyetuma" class="w-full p-3 rounded-lg bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-orange-500"></textarea>
+                </div>
+
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <button onclick="sendConfirmation('whatsapp')" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button onclick="sendConfirmation('sms')" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-3 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition">
+                        <i class="fa-solid fa-comment-sms"></i> Normal SMS
+                    </button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-slate-400 text-sm">
+        <p>&copy; 2026 Dulla Mabando. Tunakuhudumia kwa Uaminifu, Haraka na Bei Nafuu!</p>
+    </footer>
+
+    <!-- JavaScript Logical Functions -->
+    <script>
+        const halotelData = [
+            { gb: "GB 3", price: "4,000" },
+            { gb: "GB 4", price: "5,000" },
+            { gb: "GB 5", price: "6,000" },
+            { gb: "GB 6", price: "7,000" },
+            { gb: "GB 7", price: "8,000" },
+            { gb: "GB 8", price: "9,000" },
+            { gb: "GB 9", price: "9,500" },
+            { gb: "GB 10", price: "10,000" },
+            { gb: "GB 15", price: "15,000" },
+            { gb: "GB 20", price: "20,000" },
+            { gb: "GB 30", price: "30,000" },
+            { gb: "GB 50", price: "48,000" },
+            { gb: "GB 100", price: "90,000" }
+        ];
+
+        const yasData = [
+            { gb: "1 GB", price: "1,800" },
+            { gb: "2 GB", price: "3,600" },
+            { gb: "3 GB", price: "5,400" },
+            { gb: "4 GB", price: "7,200" },
+            { gb: "5 GB", price: "9,000" },
+            { gb: "6 GB", price: "10,800" },
+            { gb: "7 GB", price: "12,600" },
+            { gb: "8 GB", price: "14,400" },
+            { gb: "9 GB", price: "16,200" },
+            { gb: "10 GB", price: "18,000" },
+            { gb: "20 GB", price: "35,000" },
+            { gb: "30 GB", price: "52,000" },
+            { gb: "40 GB", price: "70,000" },
+            { gb: "50 GB", price: "85,000" }
+        ];
+
+        function selectNetwork(net) {
+            const sec = document.getElementById('package-section');
+            const title = document.getElementById('package-title');
+            const bundleList = document.getElementById('bundle-list');
+            const directContact = document.getElementById('direct-contact');
+
+            sec.classList.remove('hidden');
+            bundleList.innerHTML = '';
+            
+            if (net === 'halotel') {
+                title.innerText = 'Vifurushi vya HALOTEL';
+                directContact.classList.add('hidden');
+                bundleList.classList.remove('hidden');
+                
+                halotelData.forEach(item => {
+                    bundleList.innerHTML += createBundleCard('Halotel', item.gb, item.price);
+                });
+            } else if (net === 'yas') {
+                title.innerText = 'Vifurushi vya YAS (Super Bando Unlimited)';
+                directContact.classList.add('hidden');
+                bundleList.classList.remove('hidden');
+                
+                yasData.forEach(item => {
+                    bundleList.innerHTML += createBundleCard('Yas', item.gb, item.price);
+                });
+            } else if (net === 'vodacom') {
+                title.innerText = 'Bando za VODACOM';
+                bundleList.classList.add('hidden');
+                directContact.classList.remove('hidden');
+            } else if (net === 'airtel') {
+                title.innerText = 'Bando za AIRTEL';
+                bundleList.classList.add('hidden');
+                directContact.classList.remove('hidden');
+            }
+
+            sec.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function createBundleCard(netName, gb, price) {
+            const textMsg = encodeURIComponent(`Habari, nataka kununua Bando la ${netName} ${gb} kwa Tsh ${price}`);
+            return `
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex flex-col justify-between space-y-3">
+                    <div>
+                        <div class="text-2xl font-black text-orange-400">${gb}</div>
+                        <div class="text-lg font-bold text-white">Tsh ${price}</div>
+                    </div>
+                    <div class="flex gap-2 text-xs">
+                        <a href="https://wa.me/255614732395?text=${textMsg}" target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-2 rounded-lg text-center font-bold">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="sms:0614732395?body=${textMsg}" class="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white py-2 rounded-lg text-center font-bold">
+                            <i class="fa-solid fa-comment"></i> SMS
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function sendConfirmation(type) {
+            const phone = document.getElementById('cust-phone').value;
+            const bundle = document.getElementById('cust-bundle').value;
+            const msg = document.getElementById('cust-msg').value;
+
+            if(!phone || !bundle) {
+                alert('Tafadhali jaza Namba yako/Kipokea Bando na Kifurushi ulicholipia!');
+                return;
+            }
+
+            const text = `UTHIBITISHO WA MALIPO:\nNamba/Mteja: ${phone}\nKifurushi: ${bundle}\nTaarifa za Malipo: ${msg}`;
+            const encodedText = encodeURIComponent(text);
+
+            if(type === 'whatsapp') {
+                window.open(`https://wa.me/255614732395?text=${encodedText}`, '_blank');
+            } else if(type === 'sms') {
+                window.open(`sms:0614732395?body=${encodedText}`, '_self');
+            }
+        }
+    </script>
+</body>
+</html>
