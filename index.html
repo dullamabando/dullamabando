@@ -4,163 +4,160 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dulla Mabando</title>
+
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff7f0;--card:#fff;--ink:#1a1209;--mut:#6b5b4b;--or:#ff6a00;--yl:#ffc700;--ok:#12a150;--ln:#f0d9c4}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150e08;--card:#241810;--ink:#fff3e6;--mut:#c4ab94;--ln:#3b2a1c}}
-:root[data-theme="dark"]{--bg:#150e08;--card:#241810;--ink:#fff3e6;--mut:#c4ab94;--ln:#3b2a1c}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*,*:before,*:after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS","Segoe UI",Arial,sans-serif}
-.w{max-width:640px;margin:0 auto;padding:14px}
-header{display:flex;justify-content:space-between;align-items:center;gap:8px}
-h1{font:900 30px/1 "Arial Black",Impact,sans-serif;margin:0;letter-spacing:-1px}
-h1 span{color:var(--or)}
-select{font:inherit;padding:8px;border-radius:10px;border:2px solid var(--ln);background:var(--card);color:var(--ink);max-width:48%}
-.hero{margin:14px 0;padding:18px;border-radius:20px;background:linear-gradient(135deg,var(--or),#ff3d00);color:#fff}
-.hero b{font-size:20px;display:block}
-.steps{display:flex;gap:6px;margin:12px 0}
-.st{flex:1;text-align:center;font-size:12px;padding:8px 2px;border-radius:12px;background:var(--card);border:2px solid var(--ln);color:var(--mut)}
-.st.on{border-color:var(--or);color:var(--ink);font-weight:700}
-.st.done{background:var(--ok);border-color:var(--ok);color:#fff}
-.card{background:var(--card);border:2px solid var(--ln);border-radius:18px;padding:14px;margin-bottom:12px}
-h2{margin:0 0 4px;font-size:18px}
-.hint{color:var(--mut);margin:0 0 10px;font-size:14px}
-.pt{display:inline-block;animation:pt 1s ease-in-out infinite;font-size:20px}
-@keyframes pt{50%{transform:translateY(7px)}}
-.nets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.net{padding:16px 8px;border-radius:14px;border:3px solid var(--ln);background:var(--card);color:var(--ink);font:800 17px inherit;cursor:pointer;transition:transform .15s}
-.net:active{transform:scale(.95)}
-.net.sel{border-color:var(--or);background:var(--yl);color:#1a1209;animation:pop .35s}
-@keyframes pop{50%{transform:scale(1.08)}}
-.list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.pk{padding:10px;border-radius:12px;border:2px solid var(--ln);background:var(--card);color:var(--ink);cursor:pointer;font:inherit;text-align:center}
-.pk b{display:block;font-size:20px}
-.pk.sel{border-color:var(--or);background:var(--or);color:#fff;animation:pop .35s}
-.pulse{animation:pl 1.6s infinite}
-@keyframes pl{0%{box-shadow:0 0 0 0 rgba(255,106,0,.6)}100%{box-shadow:0 0 0 14px rgba(255,106,0,0)}}
-.sum{padding:12px;border-radius:12px;background:var(--bg);margin:10px 0;font-weight:700}
-.pay{border-left:6px solid var(--yl);padding:8px 12px;margin:8px 0;background:var(--bg);border-radius:8px}
-.pay big{display:block;font:900 24px "Arial Black",sans-serif;letter-spacing:1px}
-.pay small{color:var(--mut)}
-input[type=tel],input[type=text]{width:100%;font:inherit;padding:12px;border:2px solid var(--ln);border-radius:12px;background:var(--card);color:var(--ink);margin:4px 0 8px}
-label.ck{display:flex;gap:10px;align-items:flex-start;padding:12px;border:2px dashed var(--or);border-radius:12px;font-weight:700}
-label.ck input{width:24px;height:24px;flex:none}
-.acts{display:grid;gap:10px;margin-top:12px}
-.btn{display:block;text-align:center;padding:14px;border-radius:14px;font-weight:800;text-decoration:none;color:#fff;font-size:17px}
-.wa{background:#25d366;color:#06361a}.cl{background:#1a1209}.sm{background:#2563eb}
-.btn.off{opacity:.35;pointer-events:none}
-.btn.go{animation:pl 1.6s infinite}
-.msg{color:var(--or);font-weight:700;min-height:22px}
-.sw{display:flex;gap:8px;margin:6px 0}
-.sw button{flex:1;padding:10px;border-radius:10px;border:2px solid var(--ln);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
-.sw button.sel{border-color:var(--or);background:var(--yl);color:#1a1209;font-weight:700}
-footer{text-align:center;color:var(--mut);font-size:13px;padding:12px}
-[hidden]{display:none!important}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
-</style>
-</head>
-<body>
-<div class="w">
-<header><h1>Dulla <span>Mabando</span></h1>
-<select id="lang" aria-label="Language"></select></header>
-<div class="hero"><b data-t="tag"></b><span data-t="sub"></span></div>
-<div class="steps"><div class="st" id="s1"></div><div class="st" id="s2"></div><div class="st" id="s3"></div></div>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
 
-<section class="card" id="c1">
-<h2 data-t="h1"></h2><p class="hint"><span class="pt">👇</span> <span data-t="p1"></span></p>
-<div class="nets" id="nets"></div>
-</section>
+  --bg:#fff7f0;
+  --card:#fff;
+  --ink:#1a1209;
+  --mut:#6b5b4b;
+  --or:#ff6a00;
+  --yl:#ffc700;
+  --ok:#12a150;
+  --ln:#f0d9c4;
+}
 
-<section class="card" id="c2" hidden>
-<h2 data-t="h2"></h2><p class="hint"><span class="pt">👇</span> <span data-t="p2"></span></p>
-<div class="list" id="list"></div>
-<div id="direct" hidden>
-<p class="hint" data-t="dir"></p>
-</div>
-</section>
+*,*:before,*:after{
+  box-sizing:inherit
+}
 
-<section class="card" id="c3" hidden>
-<h2 data-t="h3"></h2>
-<div class="sum" id="sum"></div>
-<p class="hint">1️⃣ <span data-t="pay1"></span></p>
-<div class="pay"><big>0614732395</big><small>YUSUPH ZAKARIA CHENGULA</small></div>
-<div class="pay"><big>0651417108</big><small>ABDULRAHIM ZAKARIA CHENGULA</small></div>
-<p class="hint">2️⃣ <span data-t="pay2"></span></p>
-<input type="tel" id="ph" inputmode="tel" placeholder="07XXXXXXXX">
-<input type="text" id="tx" data-p="txp">
-<p class="hint">3️⃣ <span data-t="pay3"></span></p>
-<label class="ck pulse"><input type="checkbox" id="ok"><span data-t="conf"></span></label>
-<p class="msg" id="msg"></p>
-<p class="hint">4️⃣ <span data-t="to"></span></p>
-<div class="sw" id="numsw"></div>
-<div class="acts">
-<a class="btn wa off" id="bwa" target="_blank" rel="noopener">WhatsApp</a>
-<a class="btn cl off" id="bcl"></a>
-<a class="btn sm off" id="bsm"></a>
-</div>
-</section>
-<footer>Dulla Mabando · Halotel · Yas · Vodacom · Airtel</footer>
-</div>
-<script>
-var T={
-sw:{tag:"Bando za mitandao yote, haraka na bei nafuu",sub:"Halotel, Yas, Vodacom na Airtel — 24/7",s1:"1 Mtandao",s2:"2 Kifurushi",s3:"3 Lipa",h1:"Chagua mtandao wako",p1:"Bofya mtandao unaotumia",h2:"Chagua kifurushi",p2:"Bofya kifurushi unachotaka",dir:"Bei za bando za mtandao huu hazijaonyeshwa. Andika kifurushi unachotaka hapa chini kisha wasiliana nasi moja kwa moja.",h3:"Lipa na uthibitishe",pay1:"Tuma pesa kwa namba hii:",pay2:"Weka namba itakayopokea bando (na ID ya muamala):",pay3:"Ukishalipa, thibitisha hapa:",conf:"Nimelipa. Thibitisha malipo ili uendelee.",to:"Chagua namba ya muuzaji kisha tuma ombi:",call:"Piga simu",sms:"Tuma SMS",txp:"ID ya muamala (si lazima)",need:"Weka namba ya simu na uweke tiki ya malipo kwanza.",ready:"Sawa! Sasa tuma ombi lako 👇",pk:"Kifurushi",cust:"Kifurushi chako (mfano 5GB)",price:"Bei",net:"Mtandao",tsh:"TSh",other:"Wasiliana kwa bei"},
-en:{tag:"Data bundles for all networks, fast and cheap",sub:"Halotel, Yas, Vodacom and Airtel — 24/7",s1:"1 Network",s2:"2 Bundle",s3:"3 Pay",h1:"Choose your network",p1:"Tap the network you use",h2:"Choose a bundle",p2:"Tap the bundle you want",dir:"Prices for this network are not listed. Type the bundle you want below, then contact us directly.",h3:"Pay and confirm",pay1:"Send money to this number:",pay2:"Enter the number to receive the bundle (and transaction ID):",pay3:"After paying, confirm here:",conf:"I have paid. Confirm payment to continue.",to:"Pick the seller number, then send your request:",call:"Call",sms:"Send SMS",txp:"Transaction ID (optional)",need:"Enter your phone number and tick the payment box first.",ready:"Done! Now send your request 👇",pk:"Bundle",cust:"Your bundle (e.g. 5GB)",price:"Price",net:"Network",tsh:"TSh",other:"Contact for price"},
-fr:{tag:"Forfaits internet tous réseaux, rapides et abordables",sub:"Halotel, Yas, Vodacom et Airtel — 24/7",s1:"1 Réseau",s2:"2 Forfait",s3:"3 Payer",h1:"Choisissez votre réseau",p1:"Touchez votre réseau",h2:"Choisissez un forfait",p2:"Touchez le forfait voulu",dir:"Les prix de ce réseau ne sont pas affichés. Saisissez le forfait voulu puis contactez-nous directement.",h3:"Payer et confirmer",pay1:"Envoyez l'argent à ce numéro :",pay2:"Entrez le numéro qui recevra le forfait (et l'ID de transaction) :",pay3:"Après paiement, confirmez ici :",conf:"J'ai payé. Confirmer le paiement pour continuer.",to:"Choisissez le numéro du vendeur puis envoyez :",call:"Appeler",sms:"Envoyer SMS",txp:"ID de transaction (facultatif)",need:"Entrez votre numéro et cochez la case de paiement.",ready:"Parfait ! Envoyez votre demande 👇",pk:"Forfait",cust:"Votre forfait (ex. 5GB)",price:"Prix",net:"Réseau",tsh:"TSh",other:"Contactez pour le prix"},
-ar:{tag:"باقات إنترنت لكل الشبكات، سريعة وبسعر مناسب",sub:"Halotel وYas وVodacom وAirtel — 24/7",s1:"1 الشبكة",s2:"2 الباقة",s3:"3 الدفع",h1:"اختر شبكتك",p1:"اضغط على الشبكة التي تستخدمها",h2:"اختر باقة",p2:"اضغط على الباقة المطلوبة",dir:"أسعار هذه الشبكة غير معروضة. اكتب الباقة التي تريدها ثم تواصل معنا مباشرة.",h3:"ادفع وأكّد",pay1:"أرسل المال إلى هذا الرقم:",pay2:"أدخل الرقم الذي سيستلم الباقة (ورقم العملية):",pay3:"بعد الدفع أكّد هنا:",conf:"لقد دفعت. أكّد الدفع للمتابعة.",to:"اختر رقم البائع ثم أرسل طلبك:",call:"اتصال",sms:"إرسال SMS",txp:"رقم العملية (اختياري)",need:"أدخل رقم هاتفك وضع علامة الدفع أولاً.",ready:"تم! أرسل طلبك الآن 👇",pk:"باقة",cust:"باقتك (مثال 5GB)",price:"السعر",net:"الشبكة",tsh:"TSh",other:"تواصل لمعرفة السعر"}
-};
-var L={sw:"Kiswahili",en:"English",fr:"Français",ar:"العربية"};
-var G="af sq am hy az eu be bn bs bg my ca zh-CN hr cs da nl et fil fi gl ka de el gu ha hi hu is ig id ga it ja jv kn kk km ko ku ky lo lv lt mk mg ms ml mt mi mr mn ne no ps fa pl pt pa ro ru sm sr sn sd si sk sl so es su sv tg ta te th tr uk ur uz vi cy xh yo zu".split(" ");
-var gn;try{gn=new Intl.DisplayNames(["en"],{type:"language"})}catch(e){}
-var N={halotel:{p:{3:4000,4:5000,5:6000,6:7000,7:8000,8:9000,9:9500,10:10000,15:15000,20:20000,30:30000,50:48000,100:90000}},
-yas:{p:{1:1800,2:3600,3:5400,4:7200,5:9000,6:10800,7:12600,8:14400,9:16200,10:18000,20:35000,30:52000,40:70000,50:85000}},
-vodacom:{},airtel:{}};
-var NAMES={halotel:"Halotel",yas:"Yas",vodacom:"Vodacom",airtel:"Airtel"};
-var NUMS=["0614732395","0651417108"];
-var st={lang:"sw",net:null,gb:null,num:0};
-var $=function(i){return document.getElementById(i)};
-function t(k){return (T[st.lang]||T.en)[k]||T.en[k]}
-function fmt(n){return n.toLocaleString("en-US")}
-function intl(n){return "255"+n.slice(1)}
-function pkLabel(){if(!st.net)return "";var p=N[st.net].p;if(p)return st.gb+"GB — "+fmt(p[st.gb])+" "+t("tsh");return (st.gb||"")+""}
-function msg(){var c=$("ph").value.trim(),x=$("tx").value.trim();
-return "Dulla Mabando\n"+t("net")+": "+NAMES[st.net]+"\n"+t("pk")+": "+pkLabel()+"\nNamba/Number: "+c+(x?"\nID: "+x:"")+"\n✅ "+t("conf").split(".")[0]}
-function render(){
-document.documentElement.lang=st.lang;document.documentElement.dir=st.lang=="ar"?"rtl":"ltr";
-document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=t(e.dataset.t)});
-document.querySelectorAll("[data-p]").forEach(function(e){e.placeholder=t(e.dataset.p)});
-["s1","s2","s3"].forEach(function(k,i){var e=$(k);e.textContent=t(k);var step=!st.net?0:(!st.gb?1:2);e.className="st"+(i<step?" done":"")+(i==step?" on":"")});
-$("nets").innerHTML="";
-Object.keys(NAMES).forEach(function(k){var b=document.createElement("button");b.className="net"+(st.net==k?" sel":"");b.textContent=NAMES[k];b.onclick=function(){st.net=k;st.gb=null;render();$("c2").scrollIntoView({behavior:"smooth"})};$("nets").appendChild(b)});
-$("c2").hidden=!st.net;
-var p=st.net&&N[st.net].p;
-$("list").innerHTML="";$("list").hidden=!p;$("direct").hidden=!st.net||!!p;
-if(p)Object.keys(p).forEach(function(g){var b=document.createElement("button");b.className="pk"+(st.gb==g?" sel":"");b.innerHTML="<b>"+g+" GB</b>"+fmt(p[g])+" "+t("tsh");b.onclick=function(){st.gb=g;render();$("c3").scrollIntoView({behavior:"smooth"})};$("list").appendChild(b)});
-if(st.net&&!p&&!$("cust")){var i=document.createElement("input");i.type="text";i.id="cust";i.oninput=function(){st.gb=i.value.trim()||null;upd()};$("direct").appendChild(i)}
-if($("cust"))$("cust").placeholder=t("cust");
-$("c3").hidden=!(st.net&&(st.gb||!p&&$("cust")&&$("cust").value));
-$("numsw").innerHTML="";NUMS.forEach(function(n,i){var b=document.createElement("button");b.className=st.num==i?"sel":"";b.textContent=n;b.onclick=function(){st.num=i;render()};$("numsw").appendChild(b)});
-$("bcl").textContent="📞 "+t("call");$("bsm").textContent="✉️ "+t("sms");
-upd()}
-function upd(){
-if(st.net&&!N[st.net].p){$("c3").hidden=!st.gb}
-$("sum").textContent=st.net?NAMES[st.net]+" • "+pkLabel():"";
-var ok=$("ok").checked&&$("ph").value.trim().length>=9&&st.net&&st.gb;
-$("msg").textContent=ok?t("ready"):t("need");
-var n=NUMS[st.num],m=encodeURIComponent(st.net&&st.gb?msg():"");
-$("bwa").href="https://wa.me/"+intl(n)+"?text="+m;
-$("bcl").href="tel:+"+intl(n);
-$("bsm").href="sms:+"+intl(n)+"?body="+m;
-["bwa","bcl","bsm"].forEach(function(i){var e=$(i);e.classList.toggle("off",!ok);e.classList.toggle("go",!!ok)})}
-var sel=$("lang");
-Object.keys(L).forEach(function(k){sel.add(new Option(L[k],k))});
-var og=document.createElement("optgroup");og.label="🌍 Google Translate";
-G.forEach(function(c){var n=c;try{n=gn?gn.of(c):c}catch(e){}og.appendChild(new Option(n,"g:"+c))});
-sel.appendChild(og);
-sel.onchange=function(){var v=sel.value;if(v.indexOf("g:")==0){window.open("https://translate.google.com/translate?sl=auto&tl="+v.slice(2)+"&u="+encodeURIComponent(location.href),"_blank");sel.value=st.lang;return}
-st.lang=v;try{localStorage.setItem("dm_lang",v)}catch(e){}render()};
-$("ok").onchange=upd;$("ph").oninput=upd;$("tx").oninput=upd;
-try{var s=localStorage.getItem("dm_lang");if(s&&T[s])st.lang=s}catch(e){}
-sel.value=st.lang;render();
-</script>
-</body>
-</html>
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:16px/1.5 "Trebuchet MS","Segoe UI",Arial,sans-serif;
+}
+
+.w{
+  max-width:640px;
+  margin:0 auto;
+  padding:14px;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px
+}
+
+h1{
+  font:900 30px/1 "Arial Black",Impact,sans-serif;
+  margin:0;
+  letter-spacing:-1px
+}
+
+h1 span{
+  color:var(--or)
+}
+
+select{
+  font:inherit;
+  padding:8px;
+  border-radius:10px;
+  border:2px solid var(--ln);
+  background:var(--card);
+  color:var(--ink);
+  max-width:48%
+}
+
+.hero{
+  margin:14px 0;
+  padding:18px;
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--or),#ff3d00);
+  color:#fff
+}
+
+.hero b{
+  font-size:20px;
+  display:block
+}
+
+.steps{
+  display:flex;
+  gap:6px;
+  margin:12px 0
+}
+
+.st{
+  flex:1;
+  text-align:center;
+  font-size:12px;
+  padding:8px 2px;
+  border-radius:12px;
+  background:var(--card);
+  border:2px solid var(--ln);
+  color:var(--mut)
+}
+
+.st.on{
+  border-color:var(--or);
+  color:var(--ink);
+  font-weight:700
+}
+
+.st.done{
+  background:var(--ok);
+  border-color:var(--ok);
+  color:#fff
+}
+
+.card{
+  background:var(--card);
+  border:2px solid var(--ln);
+  border-radius:18px;
+  padding:14px;
+  margin-bottom:12px
+}
+
+h2{
+  margin:0 0 4px;
+  font-size:18px
+}
+
+.hint{
+  color:var(--mut);
+  margin:0 0 10px;
+  font-size:14px
+}
+
+.pt{
+  display:inline-block;
+  animation:pt 1s ease-in-out infinite;
+  font-size:20px
+}
+
+@keyframes pt{
+  50%{transform:translateY(7px)}
+}
+
+.nets{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px
+}
+
+.net{
+  padding:16px 8px;
+  border-radius:14px;
+  border:3px solid var(--ln);
+  background:var(--card);
+  color:var(--ink);
+  font:800 17px inherit;
+  cursor:pointer;
+  transition:transform .15s
+}
+
+.net:active{
+  transform:scale(.95)
+}
+
+.net.sel{
+  border-color:var(--or);
+  background:var(--yl);
+  color:#1a120
