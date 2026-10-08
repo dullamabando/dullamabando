@@ -1,381 +1,166 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dulla Mabando - Nunua Mabando kwa Urahisi</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Translate Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'sw',
-                includedLanguages: 'sw,en,fr,es,ar,de,zh-CN,hi,pt,ru,ja,ko,it',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <style>
-        /* Background ya kushuka yenye rangi za kuvutia (Sio Nyeupe) */
-        body {
-            background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 35%, #31103f 70%, #090d16 100%);
-            background-attachment: fixed;
-            color: #ffffff;
-        }
-
-        /* Animation za polepole */
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 15px rgba(249, 115, 22, 0.4); }
-            50% { box-shadow: 0 0 30px rgba(249, 115, 22, 0.8); }
-        }
-        .animate-glow {
-            animation: glow 3s infinite;
-        }
-
-        .network-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Custom Styling ya Google Translate & Search Select */
-        .goog-te-gadget-simple {
-            background-color: #1e293b !important;
-            border: 1px solid #f97316 !important;
-            padding: 6px 12px !important;
-            border-radius: 10px !important;
-            color: #fff !important;
-        }
-        .goog-te-gadget-simple span {
-            color: #fff !important;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dulla Mabando</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff7f0;--card:#fff;--ink:#1a1209;--mut:#6b5b4b;--or:#ff6a00;--yl:#ffc700;--ok:#12a150;--ln:#f0d9c4}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150e08;--card:#241810;--ink:#fff3e6;--mut:#c4ab94;--ln:#3b2a1c}}
+:root[data-theme="dark"]{--bg:#150e08;--card:#241810;--ink:#fff3e6;--mut:#c4ab94;--ln:#3b2a1c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Trebuchet MS","Segoe UI",Arial,sans-serif}
+.w{max-width:640px;margin:0 auto;padding:14px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+h1{font:900 30px/1 "Arial Black",Impact,sans-serif;margin:0;letter-spacing:-1px}
+h1 span{color:var(--or)}
+select{font:inherit;padding:8px;border-radius:10px;border:2px solid var(--ln);background:var(--card);color:var(--ink);max-width:48%}
+.hero{margin:14px 0;padding:18px;border-radius:20px;background:linear-gradient(135deg,var(--or),#ff3d00);color:#fff}
+.hero b{font-size:20px;display:block}
+.steps{display:flex;gap:6px;margin:12px 0}
+.st{flex:1;text-align:center;font-size:12px;padding:8px 2px;border-radius:12px;background:var(--card);border:2px solid var(--ln);color:var(--mut)}
+.st.on{border-color:var(--or);color:var(--ink);font-weight:700}
+.st.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.card{background:var(--card);border:2px solid var(--ln);border-radius:18px;padding:14px;margin-bottom:12px}
+h2{margin:0 0 4px;font-size:18px}
+.hint{color:var(--mut);margin:0 0 10px;font-size:14px}
+.pt{display:inline-block;animation:pt 1s ease-in-out infinite;font-size:20px}
+@keyframes pt{50%{transform:translateY(7px)}}
+.nets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.net{padding:16px 8px;border-radius:14px;border:3px solid var(--ln);background:var(--card);color:var(--ink);font:800 17px inherit;cursor:pointer;transition:transform .15s}
+.net:active{transform:scale(.95)}
+.net.sel{border-color:var(--or);background:var(--yl);color:#1a1209;animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.08)}}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pk{padding:10px;border-radius:12px;border:2px solid var(--ln);background:var(--card);color:var(--ink);cursor:pointer;font:inherit;text-align:center}
+.pk b{display:block;font-size:20px}
+.pk.sel{border-color:var(--or);background:var(--or);color:#fff;animation:pop .35s}
+.pulse{animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(255,106,0,.6)}100%{box-shadow:0 0 0 14px rgba(255,106,0,0)}}
+.sum{padding:12px;border-radius:12px;background:var(--bg);margin:10px 0;font-weight:700}
+.pay{border-left:6px solid var(--yl);padding:8px 12px;margin:8px 0;background:var(--bg);border-radius:8px}
+.pay big{display:block;font:900 24px "Arial Black",sans-serif;letter-spacing:1px}
+.pay small{color:var(--mut)}
+input[type=tel],input[type=text]{width:100%;font:inherit;padding:12px;border:2px solid var(--ln);border-radius:12px;background:var(--card);color:var(--ink);margin:4px 0 8px}
+label.ck{display:flex;gap:10px;align-items:flex-start;padding:12px;border:2px dashed var(--or);border-radius:12px;font-weight:700}
+label.ck input{width:24px;height:24px;flex:none}
+.acts{display:grid;gap:10px;margin-top:12px}
+.btn{display:block;text-align:center;padding:14px;border-radius:14px;font-weight:800;text-decoration:none;color:#fff;font-size:17px}
+.wa{background:#25d366;color:#06361a}.cl{background:#1a1209}.sm{background:#2563eb}
+.btn.off{opacity:.35;pointer-events:none}
+.btn.go{animation:pl 1.6s infinite}
+.msg{color:var(--or);font-weight:700;min-height:22px}
+.sw{display:flex;gap:8px;margin:6px 0}
+.sw button{flex:1;padding:10px;border-radius:10px;border:2px solid var(--ln);background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.sw button.sel{border-color:var(--or);background:var(--yl);color:#1a1209;font-weight:700}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:12px}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
 </head>
-<body class="font-sans min-h-screen flex flex-col justify-between">
+<body>
+<div class="w">
+<header><h1>Dulla <span>Mabando</span></h1>
+<select id="lang" aria-label="Language"></select></header>
+<div class="hero"><b data-t="tag"></b><span data-t="sub"></span></div>
+<div class="steps"><div class="st" id="s1"></div><div class="st" id="s2"></div><div class="st" id="s3"></div></div>
 
-    <!-- Header Section -->
-    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-700/60 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
-            <!-- Logo & Title -->
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-gradient-to-tr from-orange-500 to-yellow-400 rounded-xl animate-glow">
-                    <i class="fa-solid fa-wifi text-slate-900 text-2xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-yellow-300 to-amber-200">
-                        DULLA MABANDO
-                    </h1>
-                    <p class="text-xs text-orange-300/80 font-medium">Halotel • Yas • Vodacom • Airtel</p>
-                </div>
-            </div>
+<section class="card" id="c1">
+<h2 data-t="h1"></h2><p class="hint"><span class="pt">👇</span> <span data-t="p1"></span></p>
+<div class="nets" id="nets"></div>
+</section>
 
-            <!-- Language Selector with Search & Presets -->
-            <div class="flex flex-wrap items-center justify-center gap-2 bg-slate-800/80 p-2 rounded-xl border border-slate-700">
-                <!-- Search Box for Languages -->
-                <div class="relative">
-                    <input type="text" id="langSearch" onkeyup="filterLanguages()" placeholder="Search language..." class="bg-slate-900 text-xs text-white px-3 py-1.5 pl-8 rounded-lg border border-slate-600 focus:outline-none focus:border-orange-500 w-36">
-                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs absolute left-2.5 top-2.5"></i>
-                </div>
+<section class="card" id="c2" hidden>
+<h2 data-t="h2"></h2><p class="hint"><span class="pt">👇</span> <span data-t="p2"></span></p>
+<div class="list" id="list"></div>
+<div id="direct" hidden>
+<p class="hint" data-t="dir"></p>
+</div>
+</section>
 
-                <!-- Custom Quick Selector (Kiswahili / English) -->
-                <select id="quickLangSelect" onchange="changeQuickLanguage(this.value)" class="bg-slate-900 text-xs text-orange-400 font-bold px-2 py-1.5 rounded-lg border border-orange-500/50 focus:outline-none">
-                    <option value="sw">🇹🇿 Kiswahili</option>
-                    <option value="en">🇬🇧 English</option>
-                </select>
-
-                <!-- Google Translate Widget Container -->
-                <div id="google_translate_element"></div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="py-10 px-4 text-center">
-        <div class="max-w-3xl mx-auto space-y-4">
-            <span class="bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase inline-block">
-                ⚡ Huduma ya Haraka & Masaa 24
-            </span>
-            <h2 class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
-                Pata Bando za Intaneti kwa Bei Nafuu Zaidi!
-            </h2>
-            <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto">
-                Chagua mtandao wako, chagua kifurushi unachokitaka, kisha fanya malipo na uthibitishe kupitia WhatsApp au SMS ili kupata bando lako mara moja!
-            </p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-4 flex-grow w-full space-y-12">
-
-        <!-- Step 1: Select Network -->
-        <section class="space-y-4">
-            <div class="flex items-center space-x-2 border-l-4 border-orange-500 pl-3">
-                <h3 class="text-xl font-bold text-white">1. Chagua Mtandao Unaotaka</h3>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Halotel -->
-                <button onclick="selectNetwork('halotel')" class="network-card bg-slate-800/90 border border-orange-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-orange-500 hover:shadow-lg hover:shadow-orange-500/10 transition">
-                    <span class="text-2xl font-black text-orange-500">HALOTEL</span>
-                    <span class="text-xs bg-orange-500/20 text-orange-300 px-2.5 py-1 rounded-full">Vifurushi Vipo Wazi</span>
-                </button>
-
-                <!-- Yas -->
-                <button onclick="selectNetwork('yas')" class="network-card bg-slate-800/90 border border-purple-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/10 transition">
-                    <span class="text-2xl font-black text-purple-400">YAS</span>
-                    <span class="text-xs bg-purple-500/20 text-purple-300 px-2.5 py-1 rounded-full">Super Bando Unlimited</span>
-                </button>
-
-                <!-- Vodacom -->
-                <button onclick="selectNetwork('vodacom')" class="network-card bg-slate-800/90 border border-red-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-red-500 hover:shadow-lg hover:shadow-red-500/10 transition">
-                    <span class="text-2xl font-black text-red-500">VODACOM</span>
-                    <span class="text-xs bg-red-500/20 text-red-300 px-2.5 py-1 rounded-full">Omba Direct</span>
-                </button>
-
-                <!-- Airtel -->
-                <button onclick="selectNetwork('airtel')" class="network-card bg-slate-800/90 border border-rose-500/40 p-5 rounded-2xl flex flex-col items-center justify-center space-y-2 hover:border-rose-500 hover:shadow-lg hover:shadow-rose-500/10 transition">
-                    <span class="text-2xl font-black text-rose-500">AIRTEL</span>
-                    <span class="text-xs bg-rose-500/20 text-rose-300 px-2.5 py-1 rounded-full">Omba Direct</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- Step 2: Package List -->
-        <section id="package-section" class="hidden bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl border border-slate-700/80 shadow-2xl space-y-6">
-            <h3 id="package-title" class="text-2xl font-extrabold text-center text-orange-400"></h3>
-            
-            <!-- Cards Grid for Halotel & Yas -->
-            <div id="bundle-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
-
-            <!-- Direct View for Vodacom & Airtel -->
-            <div id="direct-contact" class="hidden text-center py-6 space-y-5">
-                <p class="text-slate-200 text-base max-w-xl mx-auto">
-                    Kwa sasa bando za mtandao huu zinapatikana kwa kuomba na kuagiza moja kwa moja kwa muuzaji:
-                </p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <a href="https://wa.me/255614732395?text=Habari,%20nataka%20bando%20ya%20Mtandao" target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition shadow-lg shadow-green-600/20">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Direct
-                    </a>
-                    <a href="tel:0614732395" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition shadow-lg shadow-blue-600/20">
-                        <i class="fa-solid fa-phone text-lg"></i> Normal Call
-                    </a>
-                    <a href="sms:0614732395?body=Habari,%20nataka%20bando" class="bg-amber-600 hover:bg-amber-500 text-white px-5 py-3 rounded-xl font-bold flex items-center gap-2 transition shadow-lg shadow-amber-600/20">
-                        <i class="fa-solid fa-comment-sms text-lg"></i> Normal SMS
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Step 3: Payment Details -->
-        <section class="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl border border-slate-700/80 space-y-4">
-            <div class="flex items-center space-x-2 border-l-4 border-yellow-500 pl-3">
-                <h3 class="text-xl font-bold text-yellow-400">2. Namba za Malipo</h3>
-            </div>
-            <p class="text-slate-300 text-sm">Fanya malipo kwenda namba mojawapo kati ya hizi zifuatazo:</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700/80 flex justify-between items-center">
-                    <div>
-                        <span class="text-xs text-orange-400 font-bold uppercase">Airtel / Tigo / Halotel</span>
-                        <p class="text-xl font-black text-white tracking-wider">0614732395</p>
-                        <p class="text-xs text-slate-300">Jina: <span class="font-bold text-orange-300">YUSUPH ZAKARIA CHENGULA</span></p>
-                    </div>
-                    <a href="tel:0614732395" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-xl text-orange-400 border border-slate-600">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                </div>
-
-                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700/80 flex justify-between items-center">
-                    <div>
-                        <span class="text-xs text-orange-400 font-bold uppercase">Vodacom / Halotel / Tigo</span>
-                        <p class="text-xl font-black text-white tracking-wider">0651417108</p>
-                        <p class="text-xs text-slate-300">Jina: <span class="font-bold text-orange-300">ABDULRAHIM ZAKARIA CHENGULA</span></p>
-                    </div>
-                    <a href="tel:0651417108" class="bg-slate-800 hover:bg-slate-700 p-3 rounded-xl text-orange-400 border border-slate-600">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Step 4: Confirm Payment -->
-        <section class="bg-slate-800/90 backdrop-blur-md p-6 rounded-3xl border border-slate-700/80 space-y-4">
-            <div class="flex items-center space-x-2 border-l-4 border-green-500 pl-3">
-                <h3 class="text-xl font-bold text-green-400">3. Thibitisha Malipo Uingiziwe Bando</h3>
-            </div>
-            <p class="text-slate-300 text-sm">Baada ya kutuma fedha, jaza taarifa hizi kutuma uthibitisho kwa muuzaji:</p>
-
-            <form id="confirmForm" onsubmit="event.preventDefault();" class="space-y-4 max-w-xl">
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Namba ya Simu Inayotakiwa Kupokea Bando:</label>
-                    <input type="text" id="cust-phone" placeholder="Mfano: 0712345678" required class="w-full p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:outline-none focus:border-orange-500 text-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Kifurushi Ulicholipia:</label>
-                    <input type="text" id="cust-bundle" placeholder="Mfano: Halotel GB 10 au Yas GB 5" required class="w-full p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:outline-none focus:border-orange-500 text-sm">
-                </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Jina au Ujumbe wa Muamala (SMS ya Malipo):</label>
-                    <textarea id="cust-msg" rows="2" placeholder="Weka jina au SMS ya muamala hapa..." class="w-full p-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white focus:outline-none focus:border-orange-500 text-sm"></textarea>
-                </div>
-
-                <div class="flex flex-wrap gap-3 pt-2">
-                    <button onclick="sendConfirmation('whatsapp')" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-3.5 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-green-600/20">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Send via WhatsApp
-                    </button>
-                    <button onclick="sendConfirmation('sms')" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white py-3.5 px-4 rounded-xl font-bold flex items-center justify-center gap-2 transition shadow-lg shadow-amber-600/20">
-                        <i class="fa-solid fa-comment-sms text-lg"></i> Send via SMS
-                    </button>
-                </div>
-            </form>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-950/90 border-t border-slate-800 py-6 text-center text-slate-400 text-xs mt-10">
-        <p>&copy; 2026 Dulla Mabando. All Rights Reserved. Tunakuhudumia kwa Uaminifu!</p>
-    </footer>
-
-    <!-- JavaScript Logic -->
-    <script>
-        const halotelData = [
-            { gb: "GB 3", price: "4,000" },
-            { gb: "GB 4", price: "5,000" },
-            { gb: "GB 5", price: "6,000" },
-            { gb: "GB 6", price: "7,000" },
-            { gb: "GB 7", price: "8,000" },
-            { gb: "GB 8", price: "9,000" },
-            { gb: "GB 9", price: "9,500" },
-            { gb: "GB 10", price: "10,000" },
-            { gb: "GB 15", price: "15,000" },
-            { gb: "GB 20", price: "20,000" },
-            { gb: "GB 30", price: "30,000" },
-            { gb: "GB 50", price: "48,000" },
-            { gb: "GB 100", price: "90,000" }
-        ];
-
-        const yasData = [
-            { gb: "1 GB", price: "1,800" },
-            { gb: "2 GB", price: "3,600" },
-            { gb: "3 GB", price: "5,400" },
-            { gb: "4 GB", price: "7,200" },
-            { gb: "5 GB", price: "9,000" },
-            { gb: "6 GB", price: "10,800" },
-            { gb: "7 GB", price: "12,600" },
-            { gb: "8 GB", price: "14,400" },
-            { gb: "9 GB", price: "16,200" },
-            { gb: "10 GB", price: "18,000" },
-            { gb: "20 GB", price: "35,000" },
-            { gb: "30 GB", price: "52,000" },
-            { gb: "40 GB", price: "70,000" },
-            { gb: "50 GB", price: "85,000" }
-        ];
-
-        function selectNetwork(net) {
-            const sec = document.getElementById('package-section');
-            const title = document.getElementById('package-title');
-            const bundleList = document.getElementById('bundle-list');
-            const directContact = document.getElementById('direct-contact');
-
-            sec.classList.remove('hidden');
-            bundleList.innerHTML = '';
-            
-            if (net === 'halotel') {
-                title.innerText = 'Vifurushi vya HALOTEL';
-                directContact.classList.add('hidden');
-                bundleList.classList.remove('hidden');
-                halotelData.forEach(item => {
-                    bundleList.innerHTML += createBundleCard('Halotel', item.gb, item.price);
-                });
-            } else if (net === 'yas') {
-                title.innerText = 'Vifurushi vya YAS (Super Bando Unlimited)';
-                directContact.classList.add('hidden');
-                bundleList.classList.remove('hidden');
-                yasData.forEach(item => {
-                    bundleList.innerHTML += createBundleCard('Yas', item.gb, item.price);
-                });
-            } else if (net === 'vodacom') {
-                title.innerText = 'Bando za VODACOM';
-                bundleList.classList.add('hidden');
-                directContact.classList.remove('hidden');
-            } else if (net === 'airtel') {
-                title.innerText = 'Bando za AIRTEL';
-                bundleList.classList.add('hidden');
-                directContact.classList.remove('hidden');
-            }
-
-            sec.scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function createBundleCard(netName, gb, price) {
-            const textMsg = encodeURIComponent(`Habari, nataka kununua Bando la ${netName} ${gb} kwa Tsh ${price}`);
-            return `
-                <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-700/80 flex flex-col justify-between space-y-3 hover:border-orange-500/50 transition">
-                    <div>
-                        <div class="text-2xl font-black text-orange-400">${gb}</div>
-                        <div class="text-lg font-bold text-white">Tsh ${price}</div>
-                    </div>
-                    <div class="flex gap-2 text-xs">
-                        <a href="https://wa.me/255614732395?text=${textMsg}" target="_blank" class="flex-1 bg-green-600 hover:bg-green-500 text-white py-2.5 rounded-xl text-center font-bold transition flex items-center justify-center gap-1">
-                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                        </a>
-                        <a href="sms:0614732395?body=${textMsg}" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white py-2.5 rounded-xl text-center font-bold transition flex items-center justify-center gap-1">
-                            <i class="fa-solid fa-comment"></i> SMS
-                        </a>
-                    </div>
-                </div>
-            `;
-        }
-
-        function sendConfirmation(type) {
-            const phone = document.getElementById('cust-phone').value;
-            const bundle = document.getElementById('cust-bundle').value;
-            const msg = document.getElementById('cust-msg').value;
-
-            if(!phone || !bundle) {
-                alert('Tafadhali jaza Namba yako/Kipokea Bando na Kifurushi ulicholipia!');
-                return;
-            }
-
-            const text = `UTHIBITISHO WA MALIPO:\nNamba/Mteja: ${phone}\nKifurushi: ${bundle}\nTaarifa za Malipo: ${msg}`;
-            const encodedText = encodeURIComponent(text);
-
-            if(type === 'whatsapp') {
-                window.open(`https://wa.me/255614732395?text=${encodedText}`, '_blank');
-            } else if(type === 'sms') {
-                window.open(`sms:0614732395?body=${encodedText}`, '_self');
-            }
-        }
-
-        // Language search and change function
-        function filterLanguages() {
-            const query = document.getElementById('langSearch').value.toLowerCase();
-            const select = document.querySelector('.goog-te-combo');
-            if (!select) return;
-
-            for (let i = 0; i < select.options.length; i++) {
-                const txt = select.options[i].text.toLowerCase();
-                if (txt.includes(query) && query !== '') {
-                    select.selectedIndex = i;
-                    select.dispatchEvent(new Event('change'));
-                    break;
-                }
-            }
-        }
-
-        function changeQuickLanguage(langCode) {
-            const select = document.querySelector('.goog-te-combo');
-            if (select) {
-                select.value = langCode;
-                select.dispatchEvent(new Event('change'));
-            }
-        }
-    </script>
+<section class="card" id="c3" hidden>
+<h2 data-t="h3"></h2>
+<div class="sum" id="sum"></div>
+<p class="hint">1️⃣ <span data-t="pay1"></span></p>
+<div class="pay"><big>0614732395</big><small>YUSUPH ZAKARIA CHENGULA</small></div>
+<div class="pay"><big>0651417108</big><small>ABDULRAHIM ZAKARIA CHENGULA</small></div>
+<p class="hint">2️⃣ <span data-t="pay2"></span></p>
+<input type="tel" id="ph" inputmode="tel" placeholder="07XXXXXXXX">
+<input type="text" id="tx" data-p="txp">
+<p class="hint">3️⃣ <span data-t="pay3"></span></p>
+<label class="ck pulse"><input type="checkbox" id="ok"><span data-t="conf"></span></label>
+<p class="msg" id="msg"></p>
+<p class="hint">4️⃣ <span data-t="to"></span></p>
+<div class="sw" id="numsw"></div>
+<div class="acts">
+<a class="btn wa off" id="bwa" target="_blank" rel="noopener">WhatsApp</a>
+<a class="btn cl off" id="bcl"></a>
+<a class="btn sm off" id="bsm"></a>
+</div>
+</section>
+<footer>Dulla Mabando · Halotel · Yas · Vodacom · Airtel</footer>
+</div>
+<script>
+var T={
+sw:{tag:"Bando za mitandao yote, haraka na bei nafuu",sub:"Halotel, Yas, Vodacom na Airtel — 24/7",s1:"1 Mtandao",s2:"2 Kifurushi",s3:"3 Lipa",h1:"Chagua mtandao wako",p1:"Bofya mtandao unaotumia",h2:"Chagua kifurushi",p2:"Bofya kifurushi unachotaka",dir:"Bei za bando za mtandao huu hazijaonyeshwa. Andika kifurushi unachotaka hapa chini kisha wasiliana nasi moja kwa moja.",h3:"Lipa na uthibitishe",pay1:"Tuma pesa kwa namba hii:",pay2:"Weka namba itakayopokea bando (na ID ya muamala):",pay3:"Ukishalipa, thibitisha hapa:",conf:"Nimelipa. Thibitisha malipo ili uendelee.",to:"Chagua namba ya muuzaji kisha tuma ombi:",call:"Piga simu",sms:"Tuma SMS",txp:"ID ya muamala (si lazima)",need:"Weka namba ya simu na uweke tiki ya malipo kwanza.",ready:"Sawa! Sasa tuma ombi lako 👇",pk:"Kifurushi",cust:"Kifurushi chako (mfano 5GB)",price:"Bei",net:"Mtandao",tsh:"TSh",other:"Wasiliana kwa bei"},
+en:{tag:"Data bundles for all networks, fast and cheap",sub:"Halotel, Yas, Vodacom and Airtel — 24/7",s1:"1 Network",s2:"2 Bundle",s3:"3 Pay",h1:"Choose your network",p1:"Tap the network you use",h2:"Choose a bundle",p2:"Tap the bundle you want",dir:"Prices for this network are not listed. Type the bundle you want below, then contact us directly.",h3:"Pay and confirm",pay1:"Send money to this number:",pay2:"Enter the number to receive the bundle (and transaction ID):",pay3:"After paying, confirm here:",conf:"I have paid. Confirm payment to continue.",to:"Pick the seller number, then send your request:",call:"Call",sms:"Send SMS",txp:"Transaction ID (optional)",need:"Enter your phone number and tick the payment box first.",ready:"Done! Now send your request 👇",pk:"Bundle",cust:"Your bundle (e.g. 5GB)",price:"Price",net:"Network",tsh:"TSh",other:"Contact for price"},
+fr:{tag:"Forfaits internet tous réseaux, rapides et abordables",sub:"Halotel, Yas, Vodacom et Airtel — 24/7",s1:"1 Réseau",s2:"2 Forfait",s3:"3 Payer",h1:"Choisissez votre réseau",p1:"Touchez votre réseau",h2:"Choisissez un forfait",p2:"Touchez le forfait voulu",dir:"Les prix de ce réseau ne sont pas affichés. Saisissez le forfait voulu puis contactez-nous directement.",h3:"Payer et confirmer",pay1:"Envoyez l'argent à ce numéro :",pay2:"Entrez le numéro qui recevra le forfait (et l'ID de transaction) :",pay3:"Après paiement, confirmez ici :",conf:"J'ai payé. Confirmer le paiement pour continuer.",to:"Choisissez le numéro du vendeur puis envoyez :",call:"Appeler",sms:"Envoyer SMS",txp:"ID de transaction (facultatif)",need:"Entrez votre numéro et cochez la case de paiement.",ready:"Parfait ! Envoyez votre demande 👇",pk:"Forfait",cust:"Votre forfait (ex. 5GB)",price:"Prix",net:"Réseau",tsh:"TSh",other:"Contactez pour le prix"},
+ar:{tag:"باقات إنترنت لكل الشبكات، سريعة وبسعر مناسب",sub:"Halotel وYas وVodacom وAirtel — 24/7",s1:"1 الشبكة",s2:"2 الباقة",s3:"3 الدفع",h1:"اختر شبكتك",p1:"اضغط على الشبكة التي تستخدمها",h2:"اختر باقة",p2:"اضغط على الباقة المطلوبة",dir:"أسعار هذه الشبكة غير معروضة. اكتب الباقة التي تريدها ثم تواصل معنا مباشرة.",h3:"ادفع وأكّد",pay1:"أرسل المال إلى هذا الرقم:",pay2:"أدخل الرقم الذي سيستلم الباقة (ورقم العملية):",pay3:"بعد الدفع أكّد هنا:",conf:"لقد دفعت. أكّد الدفع للمتابعة.",to:"اختر رقم البائع ثم أرسل طلبك:",call:"اتصال",sms:"إرسال SMS",txp:"رقم العملية (اختياري)",need:"أدخل رقم هاتفك وضع علامة الدفع أولاً.",ready:"تم! أرسل طلبك الآن 👇",pk:"باقة",cust:"باقتك (مثال 5GB)",price:"السعر",net:"الشبكة",tsh:"TSh",other:"تواصل لمعرفة السعر"}
+};
+var L={sw:"Kiswahili",en:"English",fr:"Français",ar:"العربية"};
+var G="af sq am hy az eu be bn bs bg my ca zh-CN hr cs da nl et fil fi gl ka de el gu ha hi hu is ig id ga it ja jv kn kk km ko ku ky lo lv lt mk mg ms ml mt mi mr mn ne no ps fa pl pt pa ro ru sm sr sn sd si sk sl so es su sv tg ta te th tr uk ur uz vi cy xh yo zu".split(" ");
+var gn;try{gn=new Intl.DisplayNames(["en"],{type:"language"})}catch(e){}
+var N={halotel:{p:{3:4000,4:5000,5:6000,6:7000,7:8000,8:9000,9:9500,10:10000,15:15000,20:20000,30:30000,50:48000,100:90000}},
+yas:{p:{1:1800,2:3600,3:5400,4:7200,5:9000,6:10800,7:12600,8:14400,9:16200,10:18000,20:35000,30:52000,40:70000,50:85000}},
+vodacom:{},airtel:{}};
+var NAMES={halotel:"Halotel",yas:"Yas",vodacom:"Vodacom",airtel:"Airtel"};
+var NUMS=["0614732395","0651417108"];
+var st={lang:"sw",net:null,gb:null,num:0};
+var $=function(i){return document.getElementById(i)};
+function t(k){return (T[st.lang]||T.en)[k]||T.en[k]}
+function fmt(n){return n.toLocaleString("en-US")}
+function intl(n){return "255"+n.slice(1)}
+function pkLabel(){if(!st.net)return "";var p=N[st.net].p;if(p)return st.gb+"GB — "+fmt(p[st.gb])+" "+t("tsh");return (st.gb||"")+""}
+function msg(){var c=$("ph").value.trim(),x=$("tx").value.trim();
+return "Dulla Mabando\n"+t("net")+": "+NAMES[st.net]+"\n"+t("pk")+": "+pkLabel()+"\nNamba/Number: "+c+(x?"\nID: "+x:"")+"\n✅ "+t("conf").split(".")[0]}
+function render(){
+document.documentElement.lang=st.lang;document.documentElement.dir=st.lang=="ar"?"rtl":"ltr";
+document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=t(e.dataset.t)});
+document.querySelectorAll("[data-p]").forEach(function(e){e.placeholder=t(e.dataset.p)});
+["s1","s2","s3"].forEach(function(k,i){var e=$(k);e.textContent=t(k);var step=!st.net?0:(!st.gb?1:2);e.className="st"+(i<step?" done":"")+(i==step?" on":"")});
+$("nets").innerHTML="";
+Object.keys(NAMES).forEach(function(k){var b=document.createElement("button");b.className="net"+(st.net==k?" sel":"");b.textContent=NAMES[k];b.onclick=function(){st.net=k;st.gb=null;render();$("c2").scrollIntoView({behavior:"smooth"})};$("nets").appendChild(b)});
+$("c2").hidden=!st.net;
+var p=st.net&&N[st.net].p;
+$("list").innerHTML="";$("list").hidden=!p;$("direct").hidden=!st.net||!!p;
+if(p)Object.keys(p).forEach(function(g){var b=document.createElement("button");b.className="pk"+(st.gb==g?" sel":"");b.innerHTML="<b>"+g+" GB</b>"+fmt(p[g])+" "+t("tsh");b.onclick=function(){st.gb=g;render();$("c3").scrollIntoView({behavior:"smooth"})};$("list").appendChild(b)});
+if(st.net&&!p&&!$("cust")){var i=document.createElement("input");i.type="text";i.id="cust";i.oninput=function(){st.gb=i.value.trim()||null;upd()};$("direct").appendChild(i)}
+if($("cust"))$("cust").placeholder=t("cust");
+$("c3").hidden=!(st.net&&(st.gb||!p&&$("cust")&&$("cust").value));
+$("numsw").innerHTML="";NUMS.forEach(function(n,i){var b=document.createElement("button");b.className=st.num==i?"sel":"";b.textContent=n;b.onclick=function(){st.num=i;render()};$("numsw").appendChild(b)});
+$("bcl").textContent="📞 "+t("call");$("bsm").textContent="✉️ "+t("sms");
+upd()}
+function upd(){
+if(st.net&&!N[st.net].p){$("c3").hidden=!st.gb}
+$("sum").textContent=st.net?NAMES[st.net]+" • "+pkLabel():"";
+var ok=$("ok").checked&&$("ph").value.trim().length>=9&&st.net&&st.gb;
+$("msg").textContent=ok?t("ready"):t("need");
+var n=NUMS[st.num],m=encodeURIComponent(st.net&&st.gb?msg():"");
+$("bwa").href="https://wa.me/"+intl(n)+"?text="+m;
+$("bcl").href="tel:+"+intl(n);
+$("bsm").href="sms:+"+intl(n)+"?body="+m;
+["bwa","bcl","bsm"].forEach(function(i){var e=$(i);e.classList.toggle("off",!ok);e.classList.toggle("go",!!ok)})}
+var sel=$("lang");
+Object.keys(L).forEach(function(k){sel.add(new Option(L[k],k))});
+var og=document.createElement("optgroup");og.label="🌍 Google Translate";
+G.forEach(function(c){var n=c;try{n=gn?gn.of(c):c}catch(e){}og.appendChild(new Option(n,"g:"+c))});
+sel.appendChild(og);
+sel.onchange=function(){var v=sel.value;if(v.indexOf("g:")==0){window.open("https://translate.google.com/translate?sl=auto&tl="+v.slice(2)+"&u="+encodeURIComponent(location.href),"_blank");sel.value=st.lang;return}
+st.lang=v;try{localStorage.setItem("dm_lang",v)}catch(e){}render()};
+$("ok").onchange=upd;$("ph").oninput=upd;$("tx").oninput=upd;
+try{var s=localStorage.getItem("dm_lang");if(s&&T[s])st.lang=s}catch(e){}
+sel.value=st.lang;render();
+</script>
 </body>
 </html>
